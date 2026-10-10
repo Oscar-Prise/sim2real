@@ -1,0 +1,11 @@
+name: OpenSimPyEnv
+channels:
+  - opensim-org
+  - defaults
+dependencies:
+  - python=3.11
+  - opensim=4.5.2
+  - numpy
+  - pandas
+  - matplotlib
+  - scipy
