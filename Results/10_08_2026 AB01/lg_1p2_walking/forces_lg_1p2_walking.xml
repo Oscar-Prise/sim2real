@@ -22,6 +22,6 @@
 			</ExternalForce>
 		</objects>
 		<groups />
-		<datafile>C:\CMU\MetaMobility Lab\Personal Code\git_clone\sim2real\Data\10_08_2026 AB01\lg_1p2_walking.mot</datafile>
+		<datafile>c:\CMU\MetaMobility Lab\Personal Code\git_clone\sim2real\Data\10_08_2026 AB01\lg_1p2_walking.mot</datafile>
 	</ExternalLoads>
 </OpenSimDocument>

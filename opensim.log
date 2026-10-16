@@ -1,0 +1,83 @@
+[2026-10-10 18:12:54.296] [info] Loaded marker file C:\CMU\MetaMobility Lab\Personal Code\git_clone\sim2real\Data\09_21_2026 AB02\standing.trc (30 markers, 649 frames)
+[2026-10-10 18:12:54.300] [info] Processing subject slip_study_scaled...
+[2026-10-10 18:12:54.300] [info] Step 1: Loading generic model
+[2026-10-10 18:12:54.313] [info] Updating Model file from 40500 to latest format...
+[2026-10-10 18:12:54.345] [info] Loaded model 3DGaitModel2392 from file c:\CMU\MetaMobility Lab\Personal Code\git_clone\sim2real\unscaled model\gait2392_MovedPCIS.osim
+[2026-10-10 18:12:54.345] [warning] Couldn't find file 'treadmill.vtp'.
+[2026-10-10 18:12:54.345] [warning] Couldn't find file 'sacrum.vtp'.
+[2026-10-10 18:12:54.345] [warning] Couldn't find file 'pelvis.vtp'.
+[2026-10-10 18:12:54.346] [warning] Couldn't find file 'l_pelvis.vtp'.
+[2026-10-10 18:12:54.346] [warning] Couldn't find file 'femur_r.vtp'.
+[2026-10-10 18:12:54.346] [warning] Couldn't find file 'tibia_r.vtp'.
+[2026-10-10 18:12:54.346] [warning] Couldn't find file 'fibula.vtp'.
+[2026-10-10 18:12:54.346] [warning] Couldn't find file 'talus.vtp'.
+[2026-10-10 18:12:54.346] [warning] Couldn't find file 'foot.vtp'.
+[2026-10-10 18:12:54.347] [warning] Couldn't find file 'bofoot.vtp'.
+[2026-10-10 18:12:54.347] [warning] Couldn't find file 'femur_l.vtp'.
+[2026-10-10 18:12:54.347] [warning] Couldn't find file 'tibia_l.vtp'.
+[2026-10-10 18:12:54.347] [warning] Couldn't find file 'l_fibula.vtp'.
+[2026-10-10 18:12:54.347] [warning] Couldn't find file 'l_talus.vtp'.
+[2026-10-10 18:12:54.347] [warning] Couldn't find file 'l_foot.vtp'.
+[2026-10-10 18:12:54.347] [warning] Couldn't find file 'l_bofoot.vtp'.
+[2026-10-10 18:12:54.347] [warning] Couldn't find file 'hat_spine.vtp'.
+[2026-10-10 18:12:54.347] [warning] Couldn't find file 'hat_jaw.vtp'.
+[2026-10-10 18:12:54.347] [warning] Couldn't find file 'hat_skull.vtp'.
+[2026-10-10 18:12:54.347] [warning] Couldn't find file 'hat_ribs.vtp'.
+[2026-10-10 18:12:54.361] [info] Step 2: Scaling generic model
+[2026-10-10 18:12:54.413] [info] Loaded marker file C:\CMU\MetaMobility Lab\Personal Code\git_clone\sim2real\Data\09_21_2026 AB02\standing.trc (30 markers, 649 frames)
+[2026-10-10 18:12:54.413] [info] Measurement 'pelvis_x'
+[2026-10-10 18:12:54.413] [info] 	pair 0 (LASIS, LPSIS): model = 0.1746094989196776, experimental = 0.199747703919806
+[2026-10-10 18:12:54.413] [info] 	pair 1 (RASIS, RPSIS): model = 0.1746094989196776, experimental = 0.18425941182306388
+[2026-10-10 18:12:54.413] [info] 	overall scale factor = 1.0996169112183227
+[2026-10-10 18:12:54.413] [info] Measurement 'pelvis_y'
+[2026-10-10 18:12:54.413] [info] 	pair 0 (LASIS, LGTR): model = 0.1540766143546155, experimental = 0.14488230126952736
+[2026-10-10 18:12:54.413] [info] 	pair 1 (RGTR, RASIS): model = 0.1540766143546155, experimental = 0.13630558461539524
+[2026-10-10 18:12:54.413] [info] 	overall scale factor = 0.9124937196431178
+[2026-10-10 18:12:54.413] [info] Measurement 'pelvis_z'
+[2026-10-10 18:12:54.413] [info] 	pair 0 (LASIS, RASIS): model = 0.256928, experimental = 0.2603467741473733
+[2026-10-10 18:12:54.413] [info] 	overall scale factor = 1.013306350990835
+[2026-10-10 18:12:54.413] [info] Measurement 'femur_y'
+[2026-10-10 18:12:54.413] [info] 	pair 0 (LGTR, LLKNE): model = 0.3909232661277658, experimental = 0.4124293169555865
+[2026-10-10 18:12:54.413] [info] 	pair 1 (RGTR, RLKNE): model = 0.3909232661277658, experimental = 0.39801248923230925
+[2026-10-10 18:12:54.413] [info] 	overall scale factor = 1.0365740241244918
+[2026-10-10 18:12:54.413] [info] Measurement 'shank_y'
+[2026-10-10 18:12:54.413] [info] 	pair 0 (LMKNE, LMANK): model = 0.3808127689499069, experimental = 0.37696513448637076
+[2026-10-10 18:12:54.413] [info] 	pair 1 (LLKNE, LLANK): model = 0.3807510496882195, experimental = 0.3892927301717468
+[2026-10-10 18:12:54.413] [info] 	pair 2 (RMANK, RMKNE): model = 0.3808127689499069, experimental = 0.3640625246449659
+[2026-10-10 18:12:54.413] [info] 	pair 3 (RLANK, RLKNE): model = 0.3807510496882195, experimental = 0.3890162002687684
+[2026-10-10 18:12:54.413] [info] 	overall scale factor = 0.9975130013701532
+[2026-10-10 18:12:54.413] [info] Measurement 'femur_z'
+[2026-10-10 18:12:54.413] [info] 	pair 0 (LMKNE, LLKNE): model = 0.1, experimental = 0.12621366446044055
+[2026-10-10 18:12:54.413] [info] 	pair 1 (RLKNE, RMKNE): model = 0.1, experimental = 0.11937907045179799
+[2026-10-10 18:12:54.413] [info] 	overall scale factor = 1.2279636745611926
+[2026-10-10 18:12:54.413] [info] Measurement 'shank_z'
+[2026-10-10 18:12:54.413] [info] 	pair 0 (LLANK, LMANK): model = 0.0916624241442479, experimental = 0.08147541937553571
+[2026-10-10 18:12:54.413] [info] 	pair 1 (RLANK, RMANK): model = 0.0916624241442479, experimental = 0.08486487664685863
+[2026-10-10 18:12:54.413] [info] 	overall scale factor = 0.907352699731282
+[2026-10-10 18:12:54.413] [info] Measurement 'foot_z'
+[2026-10-10 18:12:54.413] [info] 	pair 0 (RMT1, RMT5): model = 0.10744412553806745, experimental = 0.0962135958966151
+[2026-10-10 18:12:54.413] [info] 	pair 1 (LMT1, LMT5): model = 0.10744413451184759, experimental = 0.09396613680436576
+[2026-10-10 18:12:54.413] [info] 	overall scale factor = 0.8850168582995642
+[2026-10-10 18:12:54.413] [info] Measurement 'torso_y'
+[2026-10-10 18:12:54.413] [info] 	pair 0 (LPSIS, C7): model = 0.488143005968689, experimental = 0.4257395878419436
+[2026-10-10 18:12:54.413] [info] 	overall scale factor = 0.8721616055874656
+[2026-10-10 18:12:54.413] [info] Measurement 'torso_x'
+[2026-10-10 18:12:54.413] [info] 	pair 0 (JN, C7): model = 0.13811703481151658, experimental = 0.14513472382359183
+[2026-10-10 18:12:54.413] [info] 	overall scale factor = 1.0508097282978313
+[2026-10-10 18:12:54.413] [info] Measurement 'torso_z'
+[2026-10-10 18:12:54.413] [info] 	pair 0 (C7, LSHO): model = 0.1554247218950306, experimental = 0.1332391082641604
+[2026-10-10 18:12:54.413] [info] 	overall scale factor = 0.8572581416883364
+[2026-10-10 18:12:54.413] [info] Measurement 'foot_x'
+[2026-10-10 18:12:54.414] [info] 	pair 0 (LMT1, LHEEL): model = 0.225082161973632, experimental = 0.20555988414991128
+[2026-10-10 18:12:54.414] [info] 	pair 1 (RMT1, RHEEL): model = 0.22611041251672184, experimental = 0.2092053080773144
+[2026-10-10 18:12:54.414] [info] 	overall scale factor = 0.9192505861482997
+[2026-10-10 18:12:54.476] [info] Wrote model file 'C:\CMU\MetaMobility Lab\Personal Code\git_clone\sim2real\Results\09_21_2026 AB02\model\intermediate\stage1_segments_scaled.osim' from model.
+[2026-10-10 18:12:54.477] [info] Wrote scale file 'C:\CMU\MetaMobility Lab\Personal Code\git_clone\sim2real\Results\09_21_2026 AB02\model\intermediate\stage1_scale_factors.xml' for model slip_study_scaled.
+[2026-10-10 18:12:54.477] [info] Step 3: Placing markers on model
+[2026-10-10 18:12:54.587] [info] Loaded marker file C:\CMU\MetaMobility Lab\Personal Code\git_clone\sim2real\Data\09_21_2026 AB02\standing.trc (30 markers, 649 frames)
+[2026-10-10 18:12:54.587] [info] Averaged frames from time 2 to 2.03 in C:\CMU\MetaMobility Lab\Personal Code\git_clone\sim2real\Data\09_21_2026 AB02\standing.trc (frames 201 to 204)
+[2026-10-10 18:12:54.587] [info] Deleted 0 unused markers from model slip_study_scaled.
+[2026-10-10 18:12:54.606] [info] Frame at (t = 2):	 total squared error = 0.01290524870114395, marker error: RMS = 0.024219872288853247, max = 0.04255896311737994 (RSHO)
+[2026-10-10 18:12:54.606] [info] Moved markers in model slip_study_scaled to match locations in marker file 'C:\CMU\MetaMobility Lab\Personal Code\git_clone\sim2real\Data\09_21_2026 AB02\standing.trc'.
+[2026-10-10 18:12:54.630] [info] Wrote model file 'C:\CMU\MetaMobility Lab\Personal Code\git_clone\sim2real\Results\09_21_2026 AB02\model\standing_scaled.osim' from model slip_study_scaled.
+[2026-10-10 18:12:54.631] [info] Wrote marker file 'C:\CMU\MetaMobility Lab\Personal Code\git_clone\sim2real\Results\09_21_2026 AB02\model\intermediate\stage2_placed_markers.xml' from model slip_study_scaled.

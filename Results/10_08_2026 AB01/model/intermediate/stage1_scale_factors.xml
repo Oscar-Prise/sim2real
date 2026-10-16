@@ -8,62 +8,62 @@
 				<apply>true</apply>
 			</Scale>
 			<Scale>
-				<scales> 1.11996 1.11996 1.11996</scales>
+				<scales> 1.18735 0.929093 1.11996</scales>
 				<segment>pelvis</segment>
 				<apply>true</apply>
 			</Scale>
 			<Scale>
-				<scales> 1.08617 1.08617 1.08617</scales>
+				<scales> 1.05726 1.05726 1.12942</scales>
 				<segment>femur_r</segment>
 				<apply>true</apply>
 			</Scale>
 			<Scale>
-				<scales> 1.02501 1.02501 1.02501</scales>
+				<scales> 1.02199 1.02199 1.03025</scales>
 				<segment>tibia_r</segment>
 				<apply>true</apply>
 			</Scale>
 			<Scale>
-				<scales> 1.11233 1.11233 1.11233</scales>
+				<scales> 1 1 1</scales>
 				<segment>talus_r</segment>
 				<apply>true</apply>
 			</Scale>
 			<Scale>
-				<scales> 1.11233 1.11233 1.11233</scales>
+				<scales> 1.03789 1.03789 1.03789</scales>
 				<segment>calcn_r</segment>
 				<apply>true</apply>
 			</Scale>
 			<Scale>
-				<scales> 1.11233 1.11233 1.11233</scales>
+				<scales> 1.03789 1 0.902968</scales>
 				<segment>toes_r</segment>
 				<apply>true</apply>
 			</Scale>
 			<Scale>
-				<scales> 1.02836 1.02836 1.02836</scales>
+				<scales> 1.05726 1.05726 1.12942</scales>
 				<segment>femur_l</segment>
 				<apply>true</apply>
 			</Scale>
 			<Scale>
-				<scales> 1.01896 1.01896 1.01896</scales>
+				<scales> 1.02199 1.02199 1.03025</scales>
 				<segment>tibia_l</segment>
 				<apply>true</apply>
 			</Scale>
 			<Scale>
-				<scales> 1.12101 1.12101 1.12101</scales>
+				<scales> 1 1 1</scales>
 				<segment>talus_l</segment>
 				<apply>true</apply>
 			</Scale>
 			<Scale>
-				<scales> 1.12101 1.12101 1.12101</scales>
+				<scales> 1.03789 1.03789 1.03789</scales>
 				<segment>calcn_l</segment>
 				<apply>true</apply>
 			</Scale>
 			<Scale>
-				<scales> 1.12101 1.12101 1.12101</scales>
+				<scales> 1.03789 1 0.902968</scales>
 				<segment>toes_l</segment>
 				<apply>true</apply>
 			</Scale>
 			<Scale>
-				<scales> 0.996102 0.996102 0.996102</scales>
+				<scales> 1.13168 1.11834 1.16847</scales>
 				<segment>torso</segment>
 				<apply>true</apply>
 			</Scale>

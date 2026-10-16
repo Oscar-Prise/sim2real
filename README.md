@@ -12,13 +12,14 @@ sim2real/
 ├── unscaled model/gait2392.osim     generic model
 ├── setup/scale_setup_template.xml   scaling settings (measurements + marker weights)
 ├── scripts/
-│   ├── config.py                    defaults: session to run/plot, static window, IK weights
-│   ├── run_ik_id.py                 scale + IK + ID for every trial in a session
-│   ├── plot_ik_id.py                load + plot one trial
+│   ├── config.py                    IK marker weights, ID filter, subject lookup
+│   ├── run_ik_id.py                 scale + IK + ID for every trial in a session (paths at the top)
+│   ├── plot_ik_id.py                plot one trial over time and per gait cycle (files + options at the top)
 │   ├── scale_model.py               scaling with the OpenSim API
 │   └── progress.py                  progress bar
 ├── Results/<session>/               everything generated (safe to delete)
-│   ├── model/                       scaled model
+│   ├── model/standing_scaled.osim   final scaled model (the one to use)
+│   ├── model/intermediate/          in-between scaling outputs (for debugging only)
 │   └── <trial>/                     IK .mot, ID .sto, marker errors, external loads .xml
 └── environment.yml
 ```
@@ -28,15 +29,11 @@ sim2real/
 conda env create -f environment.yml   # once
 conda activate OpenSimPyEnv
 
-python scripts/run_ik_id.py                          # session set in config.py
-python scripts/run_ik_id.py "09_21_2026 AB02"        # a specific session
-python scripts/run_ik_id.py --all                    # every session in Data/
-python scripts/run_ik_id.py "10_08_2026 AB01" --trials lg_1p2_walking
-
-python scripts/plot_ik_id.py "10_08_2026 AB01" lg_1p2_walking
+python scripts/run_ik_id.py                          # data paths set at the top of that script
+python scripts/plot_ik_id.py                         # files set at the top of that script
 ```
 
-New session: drop the folder into `Data/` named `MM_DD_YYYY SUBJECT`, name the static trial
-`standing`, and make sure the subject is listed in `Subject Information.txt`.
+New session: set `DATA_DIR`, `RESULTS_DIR`, `STATIC_TRC`, `STATIC_TIME_WINDOW` and `SUBJECT_ID`
+at the top of `run_ik_id.py`, and make sure the subject is listed in `Subject Information.txt`.
 
 Raw Vicon data default path: `C:\Users\oscar\Documents\Vicon & Treadmill Data`

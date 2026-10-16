@@ -7,22 +7,31 @@ One-time setup (GUI):
        and the marker-placer weights exactly as you normally do.
     3. Click "Save" (NOT run) to export a setup .xml file, e.g. scale_setup_template.xml.
 
-After that, every subject / session is just:
-    scale_model(
-        setup_template_xml = 'scale_setup_template.xml',
-        generic_model_file = 'path/to/generic.osim',
-        static_trc_file    = 'path/to/standing.trc',
-        subject_mass_kg    = 70.0,
-        output_model_file  = 'path/to/subject_scaled.osim',
-    )
-or from the command line:
-    python scale_model.py --template scale_setup_template.xml --generic generic.osim ^
-        --static standing.trc --mass 70 --out subject_scaled.osim
+After that, set the paths below and run:
+    python scripts/scale_model.py
+run_ik_id.py calls scale_model() itself, using the paths at the top of that script.
 """
-import argparse
 import os
 
 import opensim as osm
+
+import config as cfg
+
+# ---------- Model to scale ----------
+# STATIC_TRC is the standing trial used to scale the model. STATIC_TIME_WINDOW is the
+# (start, end) in seconds averaged for scaling, or None to use the whole trial.
+# SUBJECT_ID is looked up in 'Subject Information.txt' for mass / height / age.
+# The scaled model is written to OUTPUT_MODEL; in-between files go next to it in intermediate/.
+# Any path can be replaced by a full path, e.g. r'C:\Users\oscar\Documents\some_session\standing.trc'.
+_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+STATIC_TRC = os.path.join(_ROOT, 'Data', '10_08_2026 AB01', 'standing.trc')
+STATIC_TIME_WINDOW = (7.0, 7.2)
+SUBJECT_ID = 'AB01'
+OUTPUT_MODEL = os.path.join(_ROOT, 'Results', '10_08_2026 AB01', 'model', 'standing_scaled.osim')
+
+GENERIC_MODEL = os.path.join(_ROOT, 'unscaled model', 'gait2392_MovedPCIS.osim')
+SCALE_SETUP_TEMPLATE = os.path.join(_ROOT, 'setup', 'scale_setup_template.xml')
 
 
 def _time_range(trc_file, t_start=None, t_end=None):
@@ -55,11 +64,12 @@ def scale_model(setup_template_xml, generic_model_file, static_trc_file,
     static_trc_file = os.path.abspath(static_trc_file)
     output_model_file = os.path.abspath(output_model_file)
 
-    out_dir = os.path.dirname(output_model_file)
-    os.makedirs(out_dir, exist_ok=True)
-    base = os.path.splitext(output_model_file)[0]
-    scale_factors_file = base + '_scaleSet.xml'
-    placed_markers_file = base + '_markers.xml'
+    # Only the final model sits next to output_model_file; in-between files go to intermediate/
+    intermediate_dir = os.path.join(os.path.dirname(output_model_file), 'intermediate')
+    os.makedirs(intermediate_dir, exist_ok=True)
+    stage1_model_file = os.path.join(intermediate_dir, 'stage1_segments_scaled.osim')
+    scale_factors_file = os.path.join(intermediate_dir, 'stage1_scale_factors.xml')
+    placed_markers_file = os.path.join(intermediate_dir, 'stage2_placed_markers.xml')
     time_range = _time_range(static_trc_file, t_start, t_end)
 
     tool = osm.ScaleTool(setup_template_xml)
@@ -83,7 +93,7 @@ def scale_model(setup_template_xml, generic_model_file, static_trc_file,
     scaler = tool.getModelScaler()
     scaler.setMarkerFileName(static_trc_file)
     scaler.setTimeRange(time_range)
-    scaler.setOutputModelFileName(base + '_scaled_only.osim')
+    scaler.setOutputModelFileName(stage1_model_file)
     scaler.setOutputScaleFileName(scale_factors_file)
 
     # --- Step 2: move markers to match the static pose (this is the final model) ---
@@ -92,6 +102,7 @@ def scale_model(setup_template_xml, generic_model_file, static_trc_file,
     placer.setTimeRange(time_range)
     placer.setOutputModelFileName(output_model_file)
     placer.setOutputMarkerFileName(placed_markers_file)
+    placer.setOutputMotionFileName(os.path.join(intermediate_dir, 'stage2_static_pose.mot'))
 
     print(f"  Scale  {os.path.basename(generic_model_file)} with "
           f"{os.path.basename(static_trc_file)} ({time_range.get(0):.2f}-{time_range.get(1):.2f} s, "
@@ -103,13 +114,16 @@ def scale_model(setup_template_xml, generic_model_file, static_trc_file,
 
 
 if __name__ == '__main__':
-    p = argparse.ArgumentParser(description="Scale an OpenSim model from a static trial.")
-    p.add_argument('--template', required=True, help='Scale setup .xml exported from the GUI')
-    p.add_argument('--generic', required=True, help='Generic (unscaled) .osim model')
-    p.add_argument('--static', required=True, help='Static trial .trc')
-    p.add_argument('--mass', required=True, type=float, help='Subject mass (kg)')
-    p.add_argument('--out', required=True, help='Output scaled .osim')
-    p.add_argument('--t0', type=float, default=None, help='Static window start (s)')
-    p.add_argument('--t1', type=float, default=None, help='Static window end (s)')
-    a = p.parse_args()
-    scale_model(a.template, a.generic, a.static, a.mass, a.out, a.t0, a.t1)
+    subject = cfg.subject_info(SUBJECT_ID)
+    t_start, t_end = STATIC_TIME_WINDOW or (None, None)
+    scale_model(
+        setup_template_xml=SCALE_SETUP_TEMPLATE,
+        generic_model_file=GENERIC_MODEL,
+        static_trc_file=STATIC_TRC,
+        subject_mass_kg=subject.mass_kg,
+        output_model_file=OUTPUT_MODEL,
+        t_start=t_start,
+        t_end=t_end,
+        subject_height_m=subject.height_m,
+        subject_age=subject.age,
+    )
