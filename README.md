@@ -13,9 +13,10 @@ sim2real/
 ├── setup/scale_setup_template.xml   scaling settings (measurements + marker weights)
 ├── scripts/
 │   ├── config.py                    IK marker weights, ID filter, subject lookup
-│   ├── run_ik_id.py                 scale + IK + ID for every trial in a session (paths at the top)
+│   ├── scale_model.py               unscaled model + static .trc -> scaled model (paths at the top)
+│   ├── run_ik_id.py                 scaled model + trial .trc / .mot -> IK + ID (paths at the top)
+│   ├── hip_from_femur.py            scaled model + trial .trc -> GTR rebuilt from LE / ME, error plots
 │   ├── plot_ik_id.py                plot one trial over time and per gait cycle (files + options at the top)
-│   ├── scale_model.py               scaling with the OpenSim API
 │   └── progress.py                  progress bar
 ├── Results/<session>/               everything generated (safe to delete)
 │   ├── model/standing_scaled.osim   final scaled model (the one to use)
@@ -29,11 +30,15 @@ sim2real/
 conda env create -f environment.yml   # once
 conda activate OpenSimPyEnv
 
-python scripts/run_ik_id.py                          # data paths set at the top of that script
-python scripts/plot_ik_id.py                         # files set at the top of that script
+python scripts/scale_model.py      # 1. once per session: makes the scaled model
+python scripts/run_ik_id.py        # 2. IK + ID with that model
+python scripts/hip_from_femur.py   #    GTR reconstruction with that model (needs step 1 only)
+python scripts/plot_ik_id.py       # 3. plots from step 2
 ```
+Each script reads its inputs from the settings at its top and only writes its own outputs.
 
-New session: set `DATA_DIR`, `RESULTS_DIR`, `STATIC_TRC`, `STATIC_TIME_WINDOW` and `SUBJECT_ID`
-at the top of `run_ik_id.py`, and make sure the subject is listed in `Subject Information.txt`.
+New session: in `scale_model.py` set `STATIC_TRC`, `STATIC_TIME_WINDOW`, `SUBJECT_ID`, `OUTPUT_MODEL`
+(and the model / template for the marker protocol), then point `SCALED_MODEL` in `run_ik_id.py` and
+`hip_from_femur.py` to that output. Make sure the subject is listed in `Subject Information.txt`.
 
 Raw Vicon data default path: `C:\Users\oscar\Documents\Vicon & Treadmill Data`

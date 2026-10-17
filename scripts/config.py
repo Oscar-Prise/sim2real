@@ -5,10 +5,13 @@ Subject mass / height / age are read from 'Subject Information.txt' by subject i
 """
 import os
 import re
+import xml.etree.ElementTree as ET
 from types import SimpleNamespace
 
 ID_LOWPASS_HZ = 6.0
 
+# IK marker weights for the old protocol (PSIS, thigh clusters). The 26-marker protocol takes its
+# weights from an IK setup file saved in the OpenSim GUI (setup/iktemplate.xml).
 IK_MARKER_WEIGHTS = {
     "LSHO": 1.0, "C7": 1.0, "RSHO": 1.0, "JN": 1.0,
     "LPSIS": 20.0, "RPSIS": 20.0, "RASIS": 20.0, "LASIS": 20.0,
@@ -17,6 +20,16 @@ IK_MARKER_WEIGHTS = {
     "RMANK": 20.0, "RMT1": 1.0, "RMT5": 1.0, "LMANK": 20.0,
     "LHEEL": 1.0, "LLANK": 1.0, "LMT1": 1.0, "LMT5": 1.0,
 }
+
+
+def ik_marker_weights(ik_setup_xml):
+    """{marker: weight} from the IKMarkerTasks of an IK setup file saved in the OpenSim GUI.
+    Tasks that are not applied get weight 0."""
+    weights = {}
+    for task in ET.parse(ik_setup_xml).getroot().iter('IKMarkerTask'):
+        applied = task.findtext('apply', 'true').strip().lower() == 'true'
+        weights[task.get('name')] = float(task.findtext('weight', '1')) if applied else 0.0
+    return weights
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SUBJECT_INFO_FILE = os.path.join(ROOT, 'Subject Information.txt')

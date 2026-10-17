@@ -1,39 +1,37 @@
 """
-Scale the model, then run Inverse Kinematics and Inverse Dynamics with the OpenSim Python API
-for every trial in DATA_DIR. Set the paths below, then run:
+Inverse Kinematics and Inverse Dynamics with the OpenSim Python API, using a model already
+scaled by scale_model.py. Set the paths below, then run:
 
     python scripts/run_ik_id.py
 """
 import math
 import os
-import time
 
 import numpy as np
 import opensim as osm
 
 import config as cfg
+from marker_report import print_ik_report
 from progress import ProgressBar
-from scale_model import scale_model
 
 # ---------- Data to process ----------
+# SCALED_MODEL is the output of scale_model.py.
 # DATA_DIR holds the trials: every <trial>.trc gets IK, and <trial>.mot (force plates) gets ID.
-# STATIC_TRC is the standing trial used to scale the model. STATIC_TIME_WINDOW is the
-# (start, end) in seconds averaged for scaling, or None to use the whole trial.
-# SUBJECT_ID is looked up in 'Subject Information.txt' for mass / height / age.
-# Results go to RESULTS_DIR/<trial>/ and the scaled model to RESULTS_DIR/model/.
+# Results go to RESULTS_DIR/<trial>/.
 # Any path can be replaced by a full path, e.g. r'C:\Users\oscar\Documents\some_session'.
 _ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-DATA_DIR = os.path.join(_ROOT, 'Data', '10_08_2026 AB01')
-RESULTS_DIR = os.path.join(_ROOT, 'Results', '10_08_2026 AB01')
-STATIC_TRC = os.path.join(DATA_DIR, 'standing.trc')
-STATIC_TIME_WINDOW = (7.0, 7.2)
-SUBJECT_ID = 'AB01'
-TRIALS = None                   # None = every .trc in DATA_DIR, or a list like ['lg_1p2_walking']
-PROCESS_STATIC_TRIALS = True    # also run IK / ID on trials with 'standing' in the name
+SCALED_MODEL = os.path.join(_ROOT, 'Results', '10_16_2026 AB01', 'model', 'Static_NoExo_shoes_scaled.osim')
+DATA_DIR = os.path.join(_ROOT, 'Data', '10_16_2026 AB01')
+RESULTS_DIR = os.path.join(_ROOT, 'Results', '10_16_2026 AB01')
+TRIALS = ['LG_1p2_NoExo_shoes', 'Static_NoExo_shoes']   # None = every .trc in DATA_DIR
+PROCESS_STATIC_TRIALS = True    # with TRIALS = None: also trials with 'standing' or 'static' in the name
 
-GENERIC_MODEL = os.path.join(_ROOT, 'unscaled model', 'gait2392_MovedPCIS.osim')
-SCALE_SETUP_TEMPLATE = os.path.join(_ROOT, 'setup', 'scale_setup_template.xml')
+# IK marker weights must match the marker protocol of the session:
+#   26-marker protocol:                  cfg.ik_marker_weights(<IK setup .xml saved in the OpenSim GUI>)
+#   old protocol (PSIS, thigh clusters): cfg.IK_MARKER_WEIGHTS
+IK_SETUP = os.path.join(_ROOT, 'setup', 'iktemplate.xml')
+IK_MARKER_WEIGHTS = cfg.ik_marker_weights(IK_SETUP)
 
 osm.Logger.setLevelString('warn')
 osm.Logger.removeFileSink()
@@ -105,26 +103,29 @@ def run_ik(model_file, trc_file, marker_weights, ik_file, errors_file, label):
     to_deg = np.array([180 / math.pi if coords.get(i).getMotionType() == 1 else 1.0
                        for i in range(coords.getSize())])
 
-    q_out = np.zeros((len(times), len(names)))
-    err_out = np.zeros((len(times), 3))
-    marker_err = osm.SimTKArrayDouble()
-
     bar = ProgressBar(len(times), f'IK  {label}')
     state.setTime(times[0])
     solver.assemble(state)
+    # Only valid after assemble(); querying the solver before that crashes the process.
+    marker_names = [solver.getMarkerNameForIndex(i) for i in range(solver.getNumMarkersInUse())]
+    q_out = np.zeros((len(times), len(names)))
+    per_marker = np.zeros((len(times), len(marker_names)))
+    marker_err = osm.SimTKArrayDouble()
     for k, t in enumerate(times):
         state.setTime(t)
         solver.track(state)
         q_out[k] = [coords.get(i).getValue(state) for i in range(len(names))]
         solver.computeCurrentMarkerErrors(marker_err)
-        e = np.array([marker_err.getElt(j) for j in range(marker_err.size())])
-        err_out[k] = [np.sum(e ** 2), np.sqrt(np.mean(e ** 2)), e.max()]
+        per_marker[k] = [marker_err.getElt(j) for j in range(marker_err.size())]
         bar.update(k + 1)
 
+    err_out = np.column_stack([np.sum(per_marker ** 2, axis=1), np.sqrt(np.mean(per_marker ** 2, axis=1)),
+                               per_marker.max(axis=1)])
     write_opensim_table(ik_file, 'Coordinates', times, names, q_out * to_deg, in_degrees=True)
     write_opensim_table(errors_file, 'Model Marker Errors from IK', times,
                         ['total_squared_error', 'marker_error_RMS', 'marker_error_max'], err_out, False)
     bar.finish(f'marker RMS {100 * err_out[:, 1].mean():.1f} cm (max {100 * err_out[:, 2].max():.1f} cm)')
+    print_ik_report(label, marker_names, 100 * per_marker)
 
 
 def run_id(model_file, ik_file, loads_xml, id_file, lowpass_hz, label):
@@ -173,31 +174,15 @@ def run_id(model_file, ik_file, loads_xml, id_file, lowpass_hz, label):
 def list_trials(data_dir, include_static):
     """All trials with a .trc file in data_dir; static (standing) trials only if include_static."""
     trials = [os.path.splitext(f)[0] for f in os.listdir(data_dir) if f.lower().endswith('.trc')]
-    return sorted(t for t in trials if include_static or 'standing' not in t.lower())
+    is_static = lambda t: 'standing' in t.lower() or 'static' in t.lower()
+    return sorted(t for t in trials if include_static or not is_static(t))
 
 
 def main():
-    subject = cfg.subject_info(SUBJECT_ID)
+    if not os.path.isfile(SCALED_MODEL):
+        raise FileNotFoundError(f"Scaled model not found: {SCALED_MODEL}\nRun scale_model.py first.")
     trials = TRIALS or list_trials(DATA_DIR, PROCESS_STATIC_TRIALS)
-    t_start, t_end = STATIC_TIME_WINDOW or (None, None)
-    static_name = os.path.splitext(os.path.basename(STATIC_TRC))[0]
-    scaled_model = os.path.join(RESULTS_DIR, 'model', f'{static_name}_scaled.osim')
-
-    print(f"\n=== {DATA_DIR}\n    {subject.name} ({subject.id}), {subject.mass_kg} kg, {subject.height_m} m ===")
-    print(f"Trials: {', '.join(trials)}")
-
-    t0 = time.time()
-    scale_model(
-        setup_template_xml=SCALE_SETUP_TEMPLATE,
-        generic_model_file=GENERIC_MODEL,
-        static_trc_file=STATIC_TRC,
-        subject_mass_kg=subject.mass_kg,
-        output_model_file=scaled_model,
-        t_start=t_start,
-        t_end=t_end,
-        subject_height_m=subject.height_m,
-        subject_age=subject.age,
-    )
+    print(f"\n=== {DATA_DIR}\n    model: {os.path.basename(SCALED_MODEL)}\n    trials: {', '.join(trials)}")
 
     for trial in trials:
         out_dir = os.path.join(RESULTS_DIR, trial)
@@ -207,16 +192,16 @@ def main():
         ik_file = os.path.join(out_dir, f'ik_{trial}.mot')
         loads_xml = os.path.join(out_dir, f'forces_{trial}.xml')
 
-        run_ik(scaled_model, trc_file, cfg.IK_MARKER_WEIGHTS, ik_file,
+        run_ik(SCALED_MODEL, trc_file, IK_MARKER_WEIGHTS, ik_file,
                os.path.join(out_dir, f'ik_marker_errors_{trial}.sto'), trial)
         if not os.path.isfile(force_mot):
             print(f"  ID  {trial}: no force file ({os.path.basename(force_mot)}), skipped")
             continue
         write_external_loads_xml(loads_xml, force_mot, trial)
-        run_id(scaled_model, ik_file, loads_xml, os.path.join(out_dir, f'id_{trial}.sto'),
+        run_id(SCALED_MODEL, ik_file, loads_xml, os.path.join(out_dir, f'id_{trial}.sto'),
                cfg.ID_LOWPASS_HZ, trial)
 
-    print(f"Done in {time.time() - t0:.0f}s. Results in {RESULTS_DIR}")
+    print(f"Results in {RESULTS_DIR}")
 
 
 if __name__ == '__main__':
