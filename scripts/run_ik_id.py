@@ -11,8 +11,8 @@ import numpy as np
 import opensim as osm
 
 import config as cfg
-from marker_report import print_ik_report
-from progress import ProgressBar
+from util_marker_report import print_ik_report
+from util_progress_bar import ProgressBar
 
 # ---------- Data to process ----------
 # SCALED_MODEL is the output of scale_model.py.
@@ -21,16 +21,16 @@ from progress import ProgressBar
 # Any path can be replaced by a full path, e.g. r'C:\Users\oscar\Documents\some_session'.
 _ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-SCALED_MODEL = os.path.join(_ROOT, 'Results', '10_16_2026 AB01', 'model', 'Static_NoExo_shoes_scaled.osim')
+SCALED_MODEL = os.path.join(_ROOT, 'Results', '10_16_2026 AB01', 'model', 'Static_Exo_scaled.osim')
 DATA_DIR = os.path.join(_ROOT, 'Data', '10_16_2026 AB01')
 RESULTS_DIR = os.path.join(_ROOT, 'Results', '10_16_2026 AB01')
-TRIALS = ['LG_1p2_NoExo_shoes', 'Static_NoExo_shoes']   # None = every .trc in DATA_DIR
+TRIALS = ['LG_1p2_ExoOn', 'Static_Exo']   # None = every .trc in DATA_DIR
 PROCESS_STATIC_TRIALS = True    # with TRIALS = None: also trials with 'standing' or 'static' in the name
 
 # IK marker weights must match the marker protocol of the session:
 #   26-marker protocol:                  cfg.ik_marker_weights(<IK setup .xml saved in the OpenSim GUI>)
 #   old protocol (PSIS, thigh clusters): cfg.IK_MARKER_WEIGHTS
-IK_SETUP = os.path.join(_ROOT, 'setup', 'iktemplate.xml')
+IK_SETUP = os.path.join(_ROOT, 'setup', 'ik38mktemplate.xml')
 IK_MARKER_WEIGHTS = cfg.ik_marker_weights(IK_SETUP)
 
 osm.Logger.setLevelString('warn')

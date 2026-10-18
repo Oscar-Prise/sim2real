@@ -15,9 +15,12 @@ sim2real/
 │   ├── config.py                    IK marker weights, ID filter, subject lookup
 │   ├── scale_model.py               unscaled model + static .trc -> scaled model (paths at the top)
 │   ├── run_ik_id.py                 scaled model + trial .trc / .mot -> IK + ID (paths at the top)
-│   ├── hip_from_femur.py            scaled model + trial .trc -> GTR rebuilt from LE / ME, error plots
+│   ├── hip_from_femur.py            scaled model + trial .trc -> GTR rebuilt from LE / ME (.trc with
+│   │                                RGTR_est / LGTR_est added), error plots
 │   ├── plot_ik_id.py                plot one trial over time and per gait cycle (files + options at the top)
-│   └── progress.py                  progress bar
+│   ├── util_marker_report.py        marker-error tables printed by scale_model.py and run_ik_id.py
+│   ├── util_progress_bar.py         progress bar
+│   └── util_stl2vtp.py              convert .stl geometry to .vtp
 ├── Results/<session>/               everything generated (safe to delete)
 │   ├── model/standing_scaled.osim   final scaled model (the one to use)
 │   ├── model/intermediate/          in-between scaling outputs (for debugging only)

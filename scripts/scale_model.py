@@ -17,8 +17,11 @@ import os
 import numpy as np
 import opensim as osm
 
+# The conda opensim package doesn't search the GUI install's Geometry folder by itself
+osm.ModelVisualizer.addDirToGeometrySearchPaths(r'C:\OpenSim 4.5\Geometry')
+
 import config as cfg
-from marker_report import print_scale_report, read_scale_factors
+from util_marker_report import print_scale_report, read_scale_factors
 
 osm.Logger.setLevelString('warn')
 
@@ -30,16 +33,16 @@ osm.Logger.setLevelString('warn')
 # Any path can be replaced by a full path, e.g. r'C:\Users\oscar\Documents\some_session\standing.trc'.
 _ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-STATIC_TRC = os.path.join(_ROOT, 'Data', '10_16_2026 AB01', 'Static_NoExo_shoes.trc')
-STATIC_TIME_WINDOW = (7.93, 8.13)
+STATIC_TRC = os.path.join(_ROOT, 'Data', '10_16_2026 AB01', 'Static_Exo.trc')
+STATIC_TIME_WINDOW = None   # whole trial; set (start, end) in seconds to average a quiet window
 SUBJECT_ID = 'AB01'
-OUTPUT_MODEL = os.path.join(_ROOT, 'Results', '10_16_2026 AB01', 'model', 'Static_NoExo_shoes_scaled.osim')
+OUTPUT_MODEL = os.path.join(_ROOT, 'Results', '10_16_2026 AB01', 'model', 'Static_Exo_scaled.osim')
 
 # Model and template must match the marker protocol of the session:
 #   old protocol (PSIS, thigh clusters): gait2392_MovedPCIS.osim, scale_setup_template.xml
 #   26-marker protocol:                  gait2392_Oz_NoPsis_26mk.osim, scale_26mk_template.xml
-GENERIC_MODEL = os.path.join(_ROOT, 'unscaled model', 'gait2392_Oz_NoPsis_26mk.osim')
-SCALE_SETUP_TEMPLATE = os.path.join(_ROOT, 'setup', 'scale_26mk_template.xml')
+GENERIC_MODEL = os.path.join(_ROOT, 'unscaled model', 'gait2392_Oz_NoPsis_wExo_38mk.osim')
+SCALE_SETUP_TEMPLATE = os.path.join(_ROOT, 'setup', 'scale_38mk_template.xml')
 
 
 def _time_range(trc_file, t_start=None, t_end=None):

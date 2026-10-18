@@ -81,3 +81,634 @@
 [2026-10-10 18:12:54.606] [info] Moved markers in model slip_study_scaled to match locations in marker file 'C:\CMU\MetaMobility Lab\Personal Code\git_clone\sim2real\Data\09_21_2026 AB02\standing.trc'.
 [2026-10-10 18:12:54.630] [info] Wrote model file 'C:\CMU\MetaMobility Lab\Personal Code\git_clone\sim2real\Results\09_21_2026 AB02\model\standing_scaled.osim' from model slip_study_scaled.
 [2026-10-10 18:12:54.631] [info] Wrote marker file 'C:\CMU\MetaMobility Lab\Personal Code\git_clone\sim2real\Results\09_21_2026 AB02\model\intermediate\stage2_placed_markers.xml' from model slip_study_scaled.
+[2026-10-16 18:39:08.107] [info] Loaded model 3DGaitModel2392 from file unscaled model/gait2392_ozNoPsis26mk.osim
+[2026-10-16 18:39:08.108] [warning] Couldn't find file 'treadmill.vtp'.
+[2026-10-16 18:39:08.108] [warning] Couldn't find file 'sacrum.vtp'.
+[2026-10-16 18:39:08.108] [warning] Couldn't find file 'pelvis.vtp'.
+[2026-10-16 18:39:08.108] [warning] Couldn't find file 'l_pelvis.vtp'.
+[2026-10-16 18:39:08.108] [warning] Couldn't find file 'femur_r.vtp'.
+[2026-10-16 18:39:08.108] [warning] Couldn't find file 'tibia_r.vtp'.
+[2026-10-16 18:39:08.108] [warning] Couldn't find file 'fibula.vtp'.
+[2026-10-16 18:39:08.109] [warning] Couldn't find file 'talus.vtp'.
+[2026-10-16 18:39:08.109] [warning] Couldn't find file 'foot.vtp'.
+[2026-10-16 18:39:08.109] [warning] Couldn't find file 'bofoot.vtp'.
+[2026-10-16 18:39:08.109] [warning] Couldn't find file 'femur_l.vtp'.
+[2026-10-16 18:39:08.109] [warning] Couldn't find file 'tibia_l.vtp'.
+[2026-10-16 18:39:08.109] [warning] Couldn't find file 'l_fibula.vtp'.
+[2026-10-16 18:39:08.109] [warning] Couldn't find file 'l_talus.vtp'.
+[2026-10-16 18:39:08.109] [warning] Couldn't find file 'l_foot.vtp'.
+[2026-10-16 18:39:08.109] [warning] Couldn't find file 'l_bofoot.vtp'.
+[2026-10-16 18:39:08.109] [warning] Couldn't find file 'hat_spine.vtp'.
+[2026-10-16 18:39:08.109] [warning] Couldn't find file 'hat_jaw.vtp'.
+[2026-10-16 18:39:08.109] [warning] Couldn't find file 'hat_skull.vtp'.
+[2026-10-16 18:39:08.109] [warning] Couldn't find file 'hat_ribs.vtp'.
+[2026-10-16 18:39:08.118] [info] Updating Model file from 40500 to latest format...
+[2026-10-16 18:39:08.129] [info] Loaded model 3DGaitModel2392 from file unscaled model/gait2392_MovedPCIS.osim
+[2026-10-16 18:39:08.129] [warning] Couldn't find file 'treadmill.vtp'.
+[2026-10-16 18:39:08.129] [warning] Couldn't find file 'sacrum.vtp'.
+[2026-10-16 18:39:08.129] [warning] Couldn't find file 'pelvis.vtp'.
+[2026-10-16 18:39:08.129] [warning] Couldn't find file 'l_pelvis.vtp'.
+[2026-10-16 18:39:08.129] [warning] Couldn't find file 'femur_r.vtp'.
+[2026-10-16 18:39:08.129] [warning] Couldn't find file 'tibia_r.vtp'.
+[2026-10-16 18:39:08.129] [warning] Couldn't find file 'fibula.vtp'.
+[2026-10-16 18:39:08.130] [warning] Couldn't find file 'talus.vtp'.
+[2026-10-16 18:39:08.130] [warning] Couldn't find file 'foot.vtp'.
+[2026-10-16 18:39:08.130] [warning] Couldn't find file 'bofoot.vtp'.
+[2026-10-16 18:39:08.130] [warning] Couldn't find file 'femur_l.vtp'.
+[2026-10-16 18:39:08.130] [warning] Couldn't find file 'tibia_l.vtp'.
+[2026-10-16 18:39:08.130] [warning] Couldn't find file 'l_fibula.vtp'.
+[2026-10-16 18:39:08.130] [warning] Couldn't find file 'l_talus.vtp'.
+[2026-10-16 18:39:08.130] [warning] Couldn't find file 'l_foot.vtp'.
+[2026-10-16 18:39:08.130] [warning] Couldn't find file 'l_bofoot.vtp'.
+[2026-10-16 18:39:08.130] [warning] Couldn't find file 'hat_spine.vtp'.
+[2026-10-16 18:39:08.130] [warning] Couldn't find file 'hat_jaw.vtp'.
+[2026-10-16 18:39:08.130] [warning] Couldn't find file 'hat_skull.vtp'.
+[2026-10-16 18:39:08.130] [warning] Couldn't find file 'hat_ribs.vtp'.
+[2026-10-17 14:41:02.131] [info] Loaded marker file C:\CMU\MetaMobility Lab\Personal Code\git_clone\sim2real\Data\10_16_2026 AB01\Static_No_Exo_w_shoes.trc (26 markers, 1040 frames)
+[2026-10-17 14:41:02.134] [info] Processing subject scaled_26mk...
+[2026-10-17 14:41:02.134] [info] Step 1: Loading generic model
+[2026-10-17 14:41:02.152] [info] Loaded model 3DGaitModel2392 from file c:\CMU\MetaMobility Lab\Personal Code\git_clone\sim2real\unscaled model\gait2392_Oz_NoPsis_26mk.osim
+[2026-10-17 14:41:02.153] [warning] Couldn't find file 'treadmill.vtp'.
+[2026-10-17 14:41:02.153] [warning] Couldn't find file 'sacrum.vtp'.
+[2026-10-17 14:41:02.153] [warning] Couldn't find file 'pelvis.vtp'.
+[2026-10-17 14:41:02.153] [warning] Couldn't find file 'l_pelvis.vtp'.
+[2026-10-17 14:41:02.153] [warning] Couldn't find file 'femur_r.vtp'.
+[2026-10-17 14:41:02.153] [warning] Couldn't find file 'tibia_r.vtp'.
+[2026-10-17 14:41:02.153] [warning] Couldn't find file 'fibula.vtp'.
+[2026-10-17 14:41:02.153] [warning] Couldn't find file 'talus.vtp'.
+[2026-10-17 14:41:02.153] [warning] Couldn't find file 'foot.vtp'.
+[2026-10-17 14:41:02.153] [warning] Couldn't find file 'bofoot.vtp'.
+[2026-10-17 14:41:02.153] [warning] Couldn't find file 'femur_l.vtp'.
+[2026-10-17 14:41:02.153] [warning] Couldn't find file 'tibia_l.vtp'.
+[2026-10-17 14:41:02.153] [warning] Couldn't find file 'l_fibula.vtp'.
+[2026-10-17 14:41:02.153] [warning] Couldn't find file 'l_talus.vtp'.
+[2026-10-17 14:41:02.153] [warning] Couldn't find file 'l_foot.vtp'.
+[2026-10-17 14:41:02.153] [warning] Couldn't find file 'l_bofoot.vtp'.
+[2026-10-17 14:41:02.153] [warning] Couldn't find file 'hat_spine.vtp'.
+[2026-10-17 14:41:02.153] [warning] Couldn't find file 'hat_jaw.vtp'.
+[2026-10-17 14:41:02.153] [warning] Couldn't find file 'hat_skull.vtp'.
+[2026-10-17 14:41:02.153] [warning] Couldn't find file 'hat_ribs.vtp'.
+[2026-10-17 14:41:02.170] [info] Step 2: Scaling generic model
+[2026-10-17 14:41:02.188] [info] Loaded marker file C:\CMU\MetaMobility Lab\Personal Code\git_clone\sim2real\Data\10_16_2026 AB01\Static_No_Exo_w_shoes.trc (26 markers, 1040 frames)
+[2026-10-17 14:41:02.188] [info] Measurement 'pelvis_y'
+[2026-10-17 14:41:02.188] [info] 	pair 0 (LASIS, LGTR): model = 0.154077, experimental = 0.160238
+[2026-10-17 14:41:02.188] [info] 	pair 1 (RGTR, RASIS): model = 0.154077, experimental = 0.161101
+[2026-10-17 14:41:02.188] [info] 	overall scale factor = 1.04279
+[2026-10-17 14:41:02.188] [info] Measurement 'pelvis_xz'
+[2026-10-17 14:41:02.188] [info] 	pair 0 (LASIS, RASIS): model = 0.256928, experimental = 0.292424
+[2026-10-17 14:41:02.188] [info] 	overall scale factor = 1.13815
+[2026-10-17 14:41:02.188] [info] Measurement 'femur_y'
+[2026-10-17 14:41:02.189] [info] 	pair 0 (LGTR, LLE): model = 0.390923, experimental = 0.385262
+[2026-10-17 14:41:02.189] [info] 	pair 1 (RGTR, RLE): model = 0.390923, experimental = 0.403320
+[2026-10-17 14:41:02.189] [info] 	overall scale factor = 1.00861
+[2026-10-17 14:41:02.189] [info] Measurement 'shank_y'
+[2026-10-17 14:41:02.189] [info] 	pair 0 (LTT, LMA): model = 0.321209, experimental = 0.32278
+[2026-10-17 14:41:02.189] [info] 	pair 1 (LHF, LLA): model = 0.314039, experimental = 0.355090
+[2026-10-17 14:41:02.189] [info] 	pair 2 (RMA, RTT): model = 0.321209, experimental = 0.332241
+[2026-10-17 14:41:02.189] [info] 	pair 3 (RLA, RHF): model = 0.314039, experimental = 0.351577
+[2026-10-17 14:41:02.189] [info] 	overall scale factor = 1.07237
+[2026-10-17 14:41:02.189] [info] Measurement 'femur_z'
+[2026-10-17 14:41:02.189] [info] 	pair 0 (LME, LLE): model = 0.1, experimental = 0.115136
+[2026-10-17 14:41:02.189] [info] 	pair 1 (RLE, RME): model = 0.1, experimental = 0.110630
+[2026-10-17 14:41:02.189] [info] 	overall scale factor = 1.12883
+[2026-10-17 14:41:02.189] [info] Measurement 'shank_z'
+[2026-10-17 14:41:02.189] [info] 	pair 0 (LLA, LMA): model = 0.0916624, experimental = 0.0960025
+[2026-10-17 14:41:02.189] [info] 	pair 1 (RLA, RMA): model = 0.0916624, experimental = 0.0954072
+[2026-10-17 14:41:02.189] [info] 	pair 2 (LHF, LTT): model = 0.0795692, experimental = 0.0777555
+[2026-10-17 14:41:02.189] [info] 	pair 3 (RHF, RTT): model = 0.0795692, experimental = 0.0793806
+[2026-10-17 14:41:02.189] [info] 	overall scale factor = 1.01576
+[2026-10-17 14:41:02.189] [info] Measurement 'foot_z'
+[2026-10-17 14:41:02.189] [info] 	pair 0 (RMT1, RMT5): model = 0.107444, experimental = 0.101523
+[2026-10-17 14:41:02.189] [info] 	pair 1 (LMT1, LMT5): model = 0.107444, experimental = 0.0955589
+[2026-10-17 14:41:02.189] [info] 	overall scale factor = 0.917136
+[2026-10-17 14:41:02.189] [info] Measurement 'torso_y'
+[2026-10-17 14:41:02.189] [info] 	pair 0 (LASIS, JN): model = 0.467171, experimental = 0.467166
+[2026-10-17 14:41:02.189] [info] 	pair 1 (RASIS, JN): model = 0.466313, experimental = 0.46196
+[2026-10-17 14:41:02.189] [info] 	overall scale factor = 0.995327
+[2026-10-17 14:41:02.189] [info] Measurement 'torso_x'
+[2026-10-17 14:41:02.189] [info] 	pair 0 (JN, C7): model = 0.138117, experimental = 0.159574
+[2026-10-17 14:41:02.189] [info] 	overall scale factor = 1.15535
+[2026-10-17 14:41:02.189] [info] Measurement 'torso_z'
+[2026-10-17 14:41:02.189] [info] 	pair 0 (C7, LS): model = 0.155425, experimental = 0.193292
+[2026-10-17 14:41:02.189] [info] 	overall scale factor = 1.24364
+[2026-10-17 14:41:02.189] [info] Measurement 'foot_x'
+[2026-10-17 14:41:02.189] [info] 	pair 0 (LMT1, LHEEL): model = 0.225082, experimental = 0.225574
+[2026-10-17 14:41:02.189] [info] 	pair 1 (RMT1, RHEEL): model = 0.22611, experimental = 0.224639
+[2026-10-17 14:41:02.189] [info] 	overall scale factor = 0.997839
+[2026-10-17 14:41:02.220] [info] Wrote model file 'C:\CMU\MetaMobility Lab\Personal Code\git_clone\sim2real\Results\10_16_2026 AB01\model\intermediate\stage1_segments_scaled.osim' from model.
+[2026-10-17 14:41:02.220] [info] Wrote scale file 'C:\CMU\MetaMobility Lab\Personal Code\git_clone\sim2real\Results\10_16_2026 AB01\model\intermediate\stage1_scale_factors.xml' for model scaled_26mk.
+[2026-10-17 14:41:02.220] [info] Step 3: Placing markers on model
+[2026-10-17 14:41:02.289] [info] Loaded marker file C:\CMU\MetaMobility Lab\Personal Code\git_clone\sim2real\Data\10_16_2026 AB01\Static_No_Exo_w_shoes.trc (26 markers, 1040 frames)
+[2026-10-17 14:41:02.289] [info] Averaged frames from time 7.93 to 8.13 in C:\CMU\MetaMobility Lab\Personal Code\git_clone\sim2real\Data\10_16_2026 AB01\Static_No_Exo_w_shoes.trc (frames 794 to 814)
+[2026-10-17 14:41:02.289] [info] Deleted 0 unused markers from model scaled_26mk.
+[2026-10-17 14:41:02.299] [info] Frame at (t = 7.93):	 total squared error = 0.0118825, marker error: RMS = 0.0222509, max = 0.03822 (RMT1)
+[2026-10-17 14:41:02.299] [info] Moved markers in model scaled_26mk to match locations in marker file 'C:\CMU\MetaMobility Lab\Personal Code\git_clone\sim2real\Data\10_16_2026 AB01\Static_No_Exo_w_shoes.trc'.
+[2026-10-17 14:41:02.310] [info] Wrote model file 'C:\CMU\MetaMobility Lab\Personal Code\git_clone\sim2real\Results\10_16_2026 AB01\model\Static_No_Exo_w_shoes_scaled.osim' from model scaled_26mk.
+[2026-10-17 14:41:02.311] [info] Wrote marker file 'C:\CMU\MetaMobility Lab\Personal Code\git_clone\sim2real\Results\10_16_2026 AB01\model\intermediate\stage2_placed_markers.xml' from model scaled_26mk.
+[2026-10-17 14:50:45.762] [info] Loaded marker file C:\CMU\MetaMobility Lab\Personal Code\git_clone\sim2real\Data\10_16_2026 AB01\Static_NoExo_shoes.trc (26 markers, 1040 frames)
+[2026-10-17 14:50:45.763] [info] Processing subject scaled_26mk...
+[2026-10-17 14:50:45.763] [info] Step 1: Loading generic model
+[2026-10-17 14:50:45.782] [info] Loaded model 3DGaitModel2392 from file c:\CMU\MetaMobility Lab\Personal Code\git_clone\sim2real\unscaled model\gait2392_Oz_NoPsis_26mk.osim
+[2026-10-17 14:50:45.782] [warning] Couldn't find file 'treadmill.vtp'.
+[2026-10-17 14:50:45.782] [warning] Couldn't find file 'sacrum.vtp'.
+[2026-10-17 14:50:45.782] [warning] Couldn't find file 'pelvis.vtp'.
+[2026-10-17 14:50:45.782] [warning] Couldn't find file 'l_pelvis.vtp'.
+[2026-10-17 14:50:45.783] [warning] Couldn't find file 'femur_r.vtp'.
+[2026-10-17 14:50:45.783] [warning] Couldn't find file 'tibia_r.vtp'.
+[2026-10-17 14:50:45.783] [warning] Couldn't find file 'fibula.vtp'.
+[2026-10-17 14:50:45.783] [warning] Couldn't find file 'talus.vtp'.
+[2026-10-17 14:50:45.783] [warning] Couldn't find file 'foot.vtp'.
+[2026-10-17 14:50:45.783] [warning] Couldn't find file 'bofoot.vtp'.
+[2026-10-17 14:50:45.783] [warning] Couldn't find file 'femur_l.vtp'.
+[2026-10-17 14:50:45.783] [warning] Couldn't find file 'tibia_l.vtp'.
+[2026-10-17 14:50:45.783] [warning] Couldn't find file 'l_fibula.vtp'.
+[2026-10-17 14:50:45.783] [warning] Couldn't find file 'l_talus.vtp'.
+[2026-10-17 14:50:45.783] [warning] Couldn't find file 'l_foot.vtp'.
+[2026-10-17 14:50:45.783] [warning] Couldn't find file 'l_bofoot.vtp'.
+[2026-10-17 14:50:45.783] [warning] Couldn't find file 'hat_spine.vtp'.
+[2026-10-17 14:50:45.783] [warning] Couldn't find file 'hat_jaw.vtp'.
+[2026-10-17 14:50:45.783] [warning] Couldn't find file 'hat_skull.vtp'.
+[2026-10-17 14:50:45.783] [warning] Couldn't find file 'hat_ribs.vtp'.
+[2026-10-17 14:50:45.789] [info] Step 2: Scaling generic model
+[2026-10-17 14:50:45.808] [info] Loaded marker file C:\CMU\MetaMobility Lab\Personal Code\git_clone\sim2real\Data\10_16_2026 AB01\Static_NoExo_shoes.trc (26 markers, 1040 frames)
+[2026-10-17 14:50:45.808] [info] Measurement 'pelvis_y'
+[2026-10-17 14:50:45.808] [info] 	pair 0 (LASIS, LGTR): model = 0.154077, experimental = 0.160238
+[2026-10-17 14:50:45.808] [info] 	pair 1 (RGTR, RASIS): model = 0.154077, experimental = 0.161101
+[2026-10-17 14:50:45.808] [info] 	overall scale factor = 1.04279
+[2026-10-17 14:50:45.808] [info] Measurement 'pelvis_xz'
+[2026-10-17 14:50:45.808] [info] 	pair 0 (LASIS, RASIS): model = 0.256928, experimental = 0.292424
+[2026-10-17 14:50:45.808] [info] 	overall scale factor = 1.13815
+[2026-10-17 14:50:45.808] [info] Measurement 'femur_y'
+[2026-10-17 14:50:45.808] [info] 	pair 0 (LGTR, LLE): model = 0.390923, experimental = 0.385262
+[2026-10-17 14:50:45.808] [info] 	pair 1 (RGTR, RLE): model = 0.390923, experimental = 0.403320
+[2026-10-17 14:50:45.808] [info] 	overall scale factor = 1.00861
+[2026-10-17 14:50:45.808] [info] Measurement 'shank_y'
+[2026-10-17 14:50:45.808] [info] 	pair 0 (LTT, LMA): model = 0.321209, experimental = 0.32278
+[2026-10-17 14:50:45.808] [info] 	pair 1 (LHF, LLA): model = 0.314039, experimental = 0.355090
+[2026-10-17 14:50:45.808] [info] 	pair 2 (RMA, RTT): model = 0.321209, experimental = 0.332241
+[2026-10-17 14:50:45.808] [info] 	pair 3 (RLA, RHF): model = 0.314039, experimental = 0.351577
+[2026-10-17 14:50:45.808] [info] 	overall scale factor = 1.07237
+[2026-10-17 14:50:45.808] [info] Measurement 'femur_z'
+[2026-10-17 14:50:45.808] [info] 	pair 0 (LME, LLE): model = 0.1, experimental = 0.115136
+[2026-10-17 14:50:45.808] [info] 	pair 1 (RLE, RME): model = 0.1, experimental = 0.110630
+[2026-10-17 14:50:45.808] [info] 	overall scale factor = 1.12883
+[2026-10-17 14:50:45.808] [info] Measurement 'shank_z'
+[2026-10-17 14:50:45.808] [info] 	pair 0 (LLA, LMA): model = 0.0916624, experimental = 0.0960025
+[2026-10-17 14:50:45.808] [info] 	pair 1 (RLA, RMA): model = 0.0916624, experimental = 0.0954072
+[2026-10-17 14:50:45.808] [info] 	pair 2 (LHF, LTT): model = 0.0795692, experimental = 0.0777555
+[2026-10-17 14:50:45.808] [info] 	pair 3 (RHF, RTT): model = 0.0795692, experimental = 0.0793806
+[2026-10-17 14:50:45.808] [info] 	overall scale factor = 1.01576
+[2026-10-17 14:50:45.808] [info] Measurement 'foot_z'
+[2026-10-17 14:50:45.808] [info] 	pair 0 (RMT1, RMT5): model = 0.107444, experimental = 0.101523
+[2026-10-17 14:50:45.808] [info] 	pair 1 (LMT1, LMT5): model = 0.107444, experimental = 0.0955589
+[2026-10-17 14:50:45.808] [info] 	overall scale factor = 0.917136
+[2026-10-17 14:50:45.808] [info] Measurement 'torso_y'
+[2026-10-17 14:50:45.808] [info] 	pair 0 (LASIS, JN): model = 0.467171, experimental = 0.467166
+[2026-10-17 14:50:45.808] [info] 	pair 1 (RASIS, JN): model = 0.466313, experimental = 0.46196
+[2026-10-17 14:50:45.808] [info] 	overall scale factor = 0.995327
+[2026-10-17 14:50:45.808] [info] Measurement 'torso_x'
+[2026-10-17 14:50:45.808] [info] 	pair 0 (JN, C7): model = 0.138117, experimental = 0.159574
+[2026-10-17 14:50:45.808] [info] 	overall scale factor = 1.15535
+[2026-10-17 14:50:45.808] [info] Measurement 'torso_z'
+[2026-10-17 14:50:45.808] [info] 	pair 0 (C7, LS): model = 0.155425, experimental = 0.193292
+[2026-10-17 14:50:45.808] [info] 	overall scale factor = 1.24364
+[2026-10-17 14:50:45.808] [info] Measurement 'foot_x'
+[2026-10-17 14:50:45.808] [info] 	pair 0 (LMT1, LHEEL): model = 0.225082, experimental = 0.225574
+[2026-10-17 14:50:45.808] [info] 	pair 1 (RMT1, RHEEL): model = 0.22611, experimental = 0.224639
+[2026-10-17 14:50:45.808] [info] 	overall scale factor = 0.997839
+[2026-10-17 14:50:45.835] [info] Wrote model file 'C:\CMU\MetaMobility Lab\Personal Code\git_clone\sim2real\Results\10_16_2026 AB01\model\intermediate\stage1_segments_scaled.osim' from model.
+[2026-10-17 14:50:45.835] [info] Wrote scale file 'C:\CMU\MetaMobility Lab\Personal Code\git_clone\sim2real\Results\10_16_2026 AB01\model\intermediate\stage1_scale_factors.xml' for model scaled_26mk.
+[2026-10-17 14:50:45.835] [info] Step 3: Placing markers on model
+[2026-10-17 14:50:45.904] [info] Loaded marker file C:\CMU\MetaMobility Lab\Personal Code\git_clone\sim2real\Data\10_16_2026 AB01\Static_NoExo_shoes.trc (26 markers, 1040 frames)
+[2026-10-17 14:50:45.904] [info] Averaged frames from time 7.93 to 8.13 in C:\CMU\MetaMobility Lab\Personal Code\git_clone\sim2real\Data\10_16_2026 AB01\Static_NoExo_shoes.trc (frames 794 to 814)
+[2026-10-17 14:50:45.904] [info] Deleted 0 unused markers from model scaled_26mk.
+[2026-10-17 14:50:45.913] [info] Frame at (t = 7.93):	 total squared error = 0.0118825, marker error: RMS = 0.0222509, max = 0.03822 (RMT1)
+[2026-10-17 14:50:45.913] [info] Moved markers in model scaled_26mk to match locations in marker file 'C:\CMU\MetaMobility Lab\Personal Code\git_clone\sim2real\Data\10_16_2026 AB01\Static_NoExo_shoes.trc'.
+[2026-10-17 14:50:45.926] [info] Wrote model file 'C:\CMU\MetaMobility Lab\Personal Code\git_clone\sim2real\Results\10_16_2026 AB01\model\Static_NoExo_shoes_scaled.osim' from model scaled_26mk.
+[2026-10-17 14:50:45.926] [info] Wrote marker file 'C:\CMU\MetaMobility Lab\Personal Code\git_clone\sim2real\Results\10_16_2026 AB01\model\intermediate\stage2_placed_markers.xml' from model scaled_26mk.
+[2026-10-17 14:58:45.753] [info] Loaded marker file C:\CMU\MetaMobility Lab\Personal Code\git_clone\sim2real\Data\10_16_2026 AB01\Static_NoExo_shoes.trc (26 markers, 1040 frames)
+[2026-10-17 14:58:45.756] [info] Processing subject scaled_26mk...
+[2026-10-17 14:58:45.756] [info] Step 1: Loading generic model
+[2026-10-17 14:58:45.773] [info] Loaded model 3DGaitModel2392 from file c:\CMU\MetaMobility Lab\Personal Code\git_clone\sim2real\unscaled model\gait2392_Oz_NoPsis_26mk.osim
+[2026-10-17 14:58:45.774] [warning] Couldn't find file 'treadmill.vtp'.
+[2026-10-17 14:58:45.774] [warning] Couldn't find file 'sacrum.vtp'.
+[2026-10-17 14:58:45.774] [warning] Couldn't find file 'pelvis.vtp'.
+[2026-10-17 14:58:45.774] [warning] Couldn't find file 'l_pelvis.vtp'.
+[2026-10-17 14:58:45.774] [warning] Couldn't find file 'femur_r.vtp'.
+[2026-10-17 14:58:45.774] [warning] Couldn't find file 'tibia_r.vtp'.
+[2026-10-17 14:58:45.775] [warning] Couldn't find file 'fibula.vtp'.
+[2026-10-17 14:58:45.775] [warning] Couldn't find file 'talus.vtp'.
+[2026-10-17 14:58:45.775] [warning] Couldn't find file 'foot.vtp'.
+[2026-10-17 14:58:45.775] [warning] Couldn't find file 'bofoot.vtp'.
+[2026-10-17 14:58:45.775] [warning] Couldn't find file 'femur_l.vtp'.
+[2026-10-17 14:58:45.775] [warning] Couldn't find file 'tibia_l.vtp'.
+[2026-10-17 14:58:45.775] [warning] Couldn't find file 'l_fibula.vtp'.
+[2026-10-17 14:58:45.775] [warning] Couldn't find file 'l_talus.vtp'.
+[2026-10-17 14:58:45.776] [warning] Couldn't find file 'l_foot.vtp'.
+[2026-10-17 14:58:45.776] [warning] Couldn't find file 'l_bofoot.vtp'.
+[2026-10-17 14:58:45.776] [warning] Couldn't find file 'hat_spine.vtp'.
+[2026-10-17 14:58:45.776] [warning] Couldn't find file 'hat_jaw.vtp'.
+[2026-10-17 14:58:45.776] [warning] Couldn't find file 'hat_skull.vtp'.
+[2026-10-17 14:58:45.776] [warning] Couldn't find file 'hat_ribs.vtp'.
+[2026-10-17 14:58:45.789] [info] Step 2: Scaling generic model
+[2026-10-17 14:58:45.811] [info] Loaded marker file C:\CMU\MetaMobility Lab\Personal Code\git_clone\sim2real\Data\10_16_2026 AB01\Static_NoExo_shoes.trc (26 markers, 1040 frames)
+[2026-10-17 14:58:45.811] [info] Measurement 'pelvis_y'
+[2026-10-17 14:58:45.811] [info] 	pair 0 (LASIS, LGTR): model = 0.1540766143546155, experimental = 0.1602379112345805
+[2026-10-17 14:58:45.811] [info] 	pair 1 (RGTR, RASIS): model = 0.1540766143546155, experimental = 0.16110135925593766
+[2026-10-17 14:58:45.811] [info] 	overall scale factor = 1.0427905358529581
+[2026-10-17 14:58:45.811] [info] Measurement 'pelvis_xz'
+[2026-10-17 14:58:45.811] [info] 	pair 0 (LASIS, RASIS): model = 0.256928, experimental = 0.29242352174744074
+[2026-10-17 14:58:45.811] [info] 	overall scale factor = 1.1381535751161445
+[2026-10-17 14:58:45.811] [info] Measurement 'femur_y'
+[2026-10-17 14:58:45.811] [info] 	pair 0 (LGTR, LLE): model = 0.3909232661277658, experimental = 0.3852617231628326
+[2026-10-17 14:58:45.812] [info] 	pair 1 (RGTR, RLE): model = 0.3909232661277658, experimental = 0.40332018616160537
+[2026-10-17 14:58:45.812] [info] 	overall scale factor = 1.0086147047931204
+[2026-10-17 14:58:45.812] [info] Measurement 'shank_y'
+[2026-10-17 14:58:45.812] [info] 	pair 0 (LTT, LMA): model = 0.3212093368489501, experimental = 0.32278029514638945
+[2026-10-17 14:58:45.812] [info] 	pair 1 (LHF, LLA): model = 0.3140393097570194, experimental = 0.3550901055267549
+[2026-10-17 14:58:45.812] [info] 	pair 2 (RMA, RTT): model = 0.3212093368489501, experimental = 0.3322406441999058
+[2026-10-17 14:58:45.812] [info] 	pair 3 (RLA, RHF): model = 0.3140393097570194, experimental = 0.35157743355631477
+[2026-10-17 14:58:45.812] [info] 	overall scale factor = 1.0723714157130928
+[2026-10-17 14:58:45.812] [info] Measurement 'femur_z'
+[2026-10-17 14:58:45.812] [info] 	pair 0 (LME, LLE): model = 0.1, experimental = 0.11513578891096866
+[2026-10-17 14:58:45.812] [info] 	pair 1 (RLE, RME): model = 0.1, experimental = 0.11062969645699994
+[2026-10-17 14:58:45.812] [info] 	overall scale factor = 1.1288274268398428
+[2026-10-17 14:58:45.812] [info] Measurement 'shank_z'
+[2026-10-17 14:58:45.812] [info] 	pair 0 (LLA, LMA): model = 0.0916624241442479, experimental = 0.09600253879323424
+[2026-10-17 14:58:45.812] [info] 	pair 1 (RLA, RMA): model = 0.0916624241442479, experimental = 0.09540719137159098
+[2026-10-17 14:58:45.812] [info] 	pair 2 (LHF, LTT): model = 0.07956915056495002, experimental = 0.07775551266495932
+[2026-10-17 14:58:45.812] [info] 	pair 3 (RHF, RTT): model = 0.07956915056495002, experimental = 0.07938061878182257
+[2026-10-17 14:58:45.812] [info] 	overall scale factor = 1.0157600390487724
+[2026-10-17 14:58:45.812] [info] Measurement 'foot_z'
+[2026-10-17 14:58:45.812] [info] 	pair 0 (RMT1, RMT5): model = 0.10744412553806745, experimental = 0.10152279565417224
+[2026-10-17 14:58:45.812] [info] 	pair 1 (LMT1, LMT5): model = 0.10744413451184759, experimental = 0.09555891104742881
+[2026-10-17 14:58:45.812] [info] 	overall scale factor = 0.9171357565316767
+[2026-10-17 14:58:45.812] [info] Measurement 'torso_y'
+[2026-10-17 14:58:45.812] [info] 	pair 0 (LASIS, JN): model = 0.4671705060609606, experimental = 0.46716573682292983
+[2026-10-17 14:58:45.812] [info] 	pair 1 (RASIS, JN): model = 0.466313306923123, experimental = 0.4619600414900778
+[2026-10-17 14:58:45.812] [info] 	overall scale factor = 0.9953271482333632
+[2026-10-17 14:58:45.812] [info] Measurement 'torso_x'
+[2026-10-17 14:58:45.812] [info] 	pair 0 (JN, C7): model = 0.13811703481151658, experimental = 0.15957384209470707
+[2026-10-17 14:58:45.812] [info] 	overall scale factor = 1.155352359775692
+[2026-10-17 14:58:45.812] [info] Measurement 'torso_z'
+[2026-10-17 14:58:45.812] [info] 	pair 0 (C7, LS): model = 0.1554247218950306, experimental = 0.19329199753986462
+[2026-10-17 14:58:45.812] [info] 	overall scale factor = 1.2436374032594923
+[2026-10-17 14:58:45.813] [info] Measurement 'foot_x'
+[2026-10-17 14:58:45.813] [info] 	pair 0 (LMT1, LHEEL): model = 0.225082161973632, experimental = 0.22557446211684
+[2026-10-17 14:58:45.813] [info] 	pair 1 (RMT1, RHEEL): model = 0.22611041251672184, experimental = 0.2246388161130087
+[2026-10-17 14:58:45.813] [info] 	overall scale factor = 0.9978394465384436
+[2026-10-17 14:58:45.843] [info] Wrote model file 'C:\CMU\MetaMobility Lab\Personal Code\git_clone\sim2real\Results\10_16_2026 AB01\model\intermediate\stage1_segments_scaled.osim' from model.
+[2026-10-17 14:58:45.843] [info] Wrote scale file 'C:\CMU\MetaMobility Lab\Personal Code\git_clone\sim2real\Results\10_16_2026 AB01\model\intermediate\stage1_scale_factors.xml' for model scaled_26mk.
+[2026-10-17 14:58:45.844] [info] Step 3: Placing markers on model
+[2026-10-17 14:58:45.915] [info] Loaded marker file C:\CMU\MetaMobility Lab\Personal Code\git_clone\sim2real\Data\10_16_2026 AB01\Static_NoExo_shoes.trc (26 markers, 1040 frames)
+[2026-10-17 14:58:45.916] [info] Averaged frames from time 7.93 to 8.13 in C:\CMU\MetaMobility Lab\Personal Code\git_clone\sim2real\Data\10_16_2026 AB01\Static_NoExo_shoes.trc (frames 794 to 814)
+[2026-10-17 14:58:45.916] [info] Deleted 0 unused markers from model scaled_26mk.
+[2026-10-17 14:58:45.926] [info] Frame at (t = 7.93):	 total squared error = 0.01188246838757064, marker error: RMS = 0.022250906711460322, max = 0.03822003396316279 (RMT1)
+[2026-10-17 14:58:45.926] [info] Moved markers in model scaled_26mk to match locations in marker file 'C:\CMU\MetaMobility Lab\Personal Code\git_clone\sim2real\Data\10_16_2026 AB01\Static_NoExo_shoes.trc'.
+[2026-10-17 14:58:45.937] [info] Wrote model file 'C:\CMU\MetaMobility Lab\Personal Code\git_clone\sim2real\Results\10_16_2026 AB01\model\Static_NoExo_shoes_scaled.osim' from model scaled_26mk.
+[2026-10-17 14:58:45.938] [info] Wrote marker file 'C:\CMU\MetaMobility Lab\Personal Code\git_clone\sim2real\Results\10_16_2026 AB01\model\intermediate\stage2_placed_markers.xml' from model scaled_26mk.
+[2026-10-17 15:11:57.978] [info] Set log level to Info.
+[2026-10-17 15:11:57.992] [info] Loaded marker file C:\CMU\MetaMobility Lab\Personal Code\git_clone\sim2real\Data\10_16_2026 AB01\Static_NoExo_shoes.trc (26 markers, 1040 frames)
+[2026-10-17 15:11:57.993] [info] Processing subject scaled_26mk...
+[2026-10-17 15:11:57.993] [info] Step 1: Loading generic model
+[2026-10-17 15:11:58.012] [info] Loaded model 3DGaitModel2392 from file c:\CMU\MetaMobility Lab\Personal Code\git_clone\sim2real\unscaled model\gait2392_Oz_NoPsis_26mk.osim
+[2026-10-17 15:11:58.012] [warning] Couldn't find file 'treadmill.vtp'.
+[2026-10-17 15:11:58.012] [warning] Couldn't find file 'sacrum.vtp'.
+[2026-10-17 15:11:58.012] [warning] Couldn't find file 'pelvis.vtp'.
+[2026-10-17 15:11:58.012] [warning] Couldn't find file 'l_pelvis.vtp'.
+[2026-10-17 15:11:58.012] [warning] Couldn't find file 'femur_r.vtp'.
+[2026-10-17 15:11:58.012] [warning] Couldn't find file 'tibia_r.vtp'.
+[2026-10-17 15:11:58.012] [warning] Couldn't find file 'fibula.vtp'.
+[2026-10-17 15:11:58.012] [warning] Couldn't find file 'talus.vtp'.
+[2026-10-17 15:11:58.012] [warning] Couldn't find file 'foot.vtp'.
+[2026-10-17 15:11:58.012] [warning] Couldn't find file 'bofoot.vtp'.
+[2026-10-17 15:11:58.012] [warning] Couldn't find file 'femur_l.vtp'.
+[2026-10-17 15:11:58.012] [warning] Couldn't find file 'tibia_l.vtp'.
+[2026-10-17 15:11:58.013] [warning] Couldn't find file 'l_fibula.vtp'.
+[2026-10-17 15:11:58.013] [warning] Couldn't find file 'l_talus.vtp'.
+[2026-10-17 15:11:58.013] [warning] Couldn't find file 'l_foot.vtp'.
+[2026-10-17 15:11:58.013] [warning] Couldn't find file 'l_bofoot.vtp'.
+[2026-10-17 15:11:58.013] [warning] Couldn't find file 'hat_spine.vtp'.
+[2026-10-17 15:11:58.013] [warning] Couldn't find file 'hat_jaw.vtp'.
+[2026-10-17 15:11:58.013] [warning] Couldn't find file 'hat_skull.vtp'.
+[2026-10-17 15:11:58.013] [warning] Couldn't find file 'hat_ribs.vtp'.
+[2026-10-17 15:11:58.019] [info] Step 2: Scaling generic model
+[2026-10-17 15:11:58.323] [info] Set log level to Info.
+[2026-10-17 15:11:58.356] [info] Loaded marker file C:\Users\oscar\AppData\Local\Temp\static_copy.trc (26 markers, 1040 frames)
+[2026-10-17 15:11:58.357] [info] Processing subject scaled_26mk...
+[2026-10-17 15:11:58.357] [info] Step 1: Loading generic model
+[2026-10-17 15:11:58.376] [info] Loaded model 3DGaitModel2392 from file c:\CMU\MetaMobility Lab\Personal Code\git_clone\sim2real\unscaled model\gait2392_Oz_NoPsis_26mk.osim
+[2026-10-17 15:11:58.376] [warning] Couldn't find file 'treadmill.vtp'.
+[2026-10-17 15:11:58.376] [warning] Couldn't find file 'sacrum.vtp'.
+[2026-10-17 15:11:58.376] [warning] Couldn't find file 'pelvis.vtp'.
+[2026-10-17 15:11:58.376] [warning] Couldn't find file 'l_pelvis.vtp'.
+[2026-10-17 15:11:58.376] [warning] Couldn't find file 'femur_r.vtp'.
+[2026-10-17 15:11:58.376] [warning] Couldn't find file 'tibia_r.vtp'.
+[2026-10-17 15:11:58.376] [warning] Couldn't find file 'fibula.vtp'.
+[2026-10-17 15:11:58.376] [warning] Couldn't find file 'talus.vtp'.
+[2026-10-17 15:11:58.376] [warning] Couldn't find file 'foot.vtp'.
+[2026-10-17 15:11:58.376] [warning] Couldn't find file 'bofoot.vtp'.
+[2026-10-17 15:11:58.376] [warning] Couldn't find file 'femur_l.vtp'.
+[2026-10-17 15:11:58.376] [warning] Couldn't find file 'tibia_l.vtp'.
+[2026-10-17 15:11:58.376] [warning] Couldn't find file 'l_fibula.vtp'.
+[2026-10-17 15:11:58.376] [warning] Couldn't find file 'l_talus.vtp'.
+[2026-10-17 15:11:58.707] [warning] Couldn't find file 'treadmill.vtp'.
+[2026-10-17 15:11:58.708] [warning] Couldn't find file 'sacrum.vtp'.
+[2026-10-17 15:11:58.708] [warning] Couldn't find file 'pelvis.vtp'.
+[2026-10-17 15:11:58.708] [warning] Couldn't find file 'l_pelvis.vtp'.
+[2026-10-17 15:11:58.708] [warning] Couldn't find file 'femur_r.vtp'.
+[2026-10-17 15:11:58.708] [warning] Couldn't find file 'tibia_r.vtp'.
+[2026-10-17 15:11:58.708] [warning] Couldn't find file 'fibula.vtp'.
+[2026-10-17 15:11:58.708] [warning] Couldn't find file 'talus.vtp'.
+[2026-10-17 15:11:58.708] [warning] Couldn't find file 'foot.vtp'.
+[2026-10-17 15:11:58.708] [warning] Couldn't find file 'bofoot.vtp'.
+[2026-10-17 15:11:58.708] [warning] Couldn't find file 'femur_l.vtp'.
+[2026-10-17 15:11:58.708] [warning] Couldn't find file 'tibia_l.vtp'.
+[2026-10-17 15:11:58.708] [warning] Couldn't find file 'l_fibula.vtp'.
+[2026-10-17 15:11:58.708] [warning] Couldn't find file 'l_talus.vtp'.
+[2026-10-17 15:11:58.708] [warning] Couldn't find file 'l_foot.vtp'.
+[2026-10-17 15:11:58.708] [warning] Couldn't find file 'l_bofoot.vtp'.
+[2026-10-17 15:11:58.708] [warning] Couldn't find file 'hat_spine.vtp'.
+[2026-10-17 15:11:59.041] [warning] Couldn't find file 'treadmill.vtp'.
+[2026-10-17 15:11:59.042] [warning] Couldn't find file 'sacrum.vtp'.
+[2026-10-17 15:11:59.042] [warning] Couldn't find file 'pelvis.vtp'.
+[2026-10-17 15:11:59.042] [warning] Couldn't find file 'l_pelvis.vtp'.
+[2026-10-17 15:11:59.042] [warning] Couldn't find file 'femur_r.vtp'.
+[2026-10-17 15:11:59.042] [warning] Couldn't find file 'tibia_r.vtp'.
+[2026-10-17 15:11:59.042] [warning] Couldn't find file 'fibula.vtp'.
+[2026-10-17 15:11:59.042] [warning] Couldn't find file 'talus.vtp'.
+[2026-10-17 15:11:59.042] [warning] Couldn't find file 'foot.vtp'.
+[2026-10-17 15:11:59.042] [warning] Couldn't find file 'bofoot.vtp'.
+[2026-10-17 15:11:59.042] [warning] Couldn't find file 'femur_l.vtp'.
+[2026-10-17 15:11:59.042] [warning] Couldn't find file 'tibia_l.vtp'.
+[2026-10-17 15:11:59.042] [warning] Couldn't find file 'l_fibula.vtp'.
+[2026-10-17 15:11:59.042] [warning] Couldn't find file 'l_talus.vtp'.
+[2026-10-17 15:11:59.042] [warning] Couldn't find file 'l_foot.vtp'.
+[2026-10-17 15:11:59.042] [warning] Couldn't find file 'l_bofoot.vtp'.
+[2026-10-17 15:12:08.361] [warning] Couldn't find file 'treadmill.vtp'.
+[2026-10-17 15:12:08.361] [warning] Couldn't find file 'sacrum.vtp'.
+[2026-10-17 15:12:08.361] [warning] Couldn't find file 'pelvis.vtp'.
+[2026-10-17 15:12:08.361] [warning] Couldn't find file 'l_pelvis.vtp'.
+[2026-10-17 15:12:08.361] [warning] Couldn't find file 'femur_r.vtp'.
+[2026-10-17 15:12:08.361] [warning] Couldn't find file 'tibia_r.vtp'.
+[2026-10-17 15:12:08.361] [warning] Couldn't find file 'fibula.vtp'.
+[2026-10-17 15:12:08.362] [warning] Couldn't find file 'talus.vtp'.
+[2026-10-17 15:12:08.362] [warning] Couldn't find file 'foot.vtp'.
+[2026-10-17 15:12:08.362] [warning] Couldn't find file 'bofoot.vtp'.
+[2026-10-17 15:12:08.362] [warning] Couldn't find file 'femur_l.vtp'.
+[2026-10-17 15:12:08.362] [warning] Couldn't find file 'tibia_l.vtp'.
+[2026-10-17 15:12:08.362] [warning] Couldn't find file 'l_fibula.vtp'.
+[2026-10-17 15:12:08.362] [warning] Couldn't find file 'l_talus.vtp'.
+[2026-10-17 15:12:08.362] [warning] Couldn't find file 'l_foot.vtp'.
+[2026-10-17 15:12:08.362] [warning] Couldn't find file 'l_bofoot.vtp'.
+[2026-10-17 15:12:08.362] [warning] Couldn't find file 'hat_spine.vtp'.
+[2026-10-17 15:12:08.362] [warning] Couldn't find file 'hat_jaw.vtp'.
+[2026-10-17 15:12:08.362] [warning] Couldn't find file 'hat_skull.vtp'.
+[2026-10-17 15:12:08.362] [warning] Couldn't find file 'hat_ribs.vtp'.
+[2026-10-17 15:12:08.537] [warning] Couldn't find file 'treadmill.vtp'.
+[2026-10-17 15:12:08.537] [warning] Couldn't find file 'sacrum.vtp'.
+[2026-10-17 15:12:08.537] [warning] Couldn't find file 'pelvis.vtp'.
+[2026-10-17 15:12:08.537] [warning] Couldn't find file 'l_pelvis.vtp'.
+[2026-10-17 15:12:08.537] [warning] Couldn't find file 'femur_r.vtp'.
+[2026-10-17 15:12:08.537] [warning] Couldn't find file 'tibia_r.vtp'.
+[2026-10-17 15:12:08.537] [warning] Couldn't find file 'fibula.vtp'.
+[2026-10-17 15:12:08.537] [warning] Couldn't find file 'talus.vtp'.
+[2026-10-17 15:12:08.537] [warning] Couldn't find file 'foot.vtp'.
+[2026-10-17 15:12:08.537] [warning] Couldn't find file 'bofoot.vtp'.
+[2026-10-17 15:12:08.537] [warning] Couldn't find file 'femur_l.vtp'.
+[2026-10-17 15:12:08.537] [warning] Couldn't find file 'tibia_l.vtp'.
+[2026-10-17 15:12:08.537] [warning] Couldn't find file 'l_fibula.vtp'.
+[2026-10-17 15:12:08.537] [warning] Couldn't find file 'l_talus.vtp'.
+[2026-10-17 15:12:08.537] [warning] Couldn't find file 'l_foot.vtp'.
+[2026-10-17 15:12:08.537] [warning] Couldn't find file 'l_bofoot.vtp'.
+[2026-10-17 15:12:08.537] [warning] Couldn't find file 'hat_spine.vtp'.
+[2026-10-17 15:12:08.537] [warning] Couldn't find file 'hat_jaw.vtp'.
+[2026-10-17 15:12:08.537] [warning] Couldn't find file 'hat_skull.vtp'.
+[2026-10-17 15:12:08.537] [warning] Couldn't find file 'hat_ribs.vtp'.
+[2026-10-17 15:12:08.645] [warning] Couldn't find file 'treadmill.vtp'.
+[2026-10-17 15:12:08.645] [warning] Couldn't find file 'sacrum.vtp'.
+[2026-10-17 15:12:08.645] [warning] Couldn't find file 'pelvis.vtp'.
+[2026-10-17 15:12:08.645] [warning] Couldn't find file 'l_pelvis.vtp'.
+[2026-10-17 15:12:08.645] [warning] Couldn't find file 'femur_r.vtp'.
+[2026-10-17 15:12:08.645] [warning] Couldn't find file 'tibia_r.vtp'.
+[2026-10-17 15:12:08.645] [warning] Couldn't find file 'fibula.vtp'.
+[2026-10-17 15:12:08.645] [warning] Couldn't find file 'talus.vtp'.
+[2026-10-17 15:12:08.645] [warning] Couldn't find file 'foot.vtp'.
+[2026-10-17 15:12:08.645] [warning] Couldn't find file 'bofoot.vtp'.
+[2026-10-17 15:12:08.645] [warning] Couldn't find file 'femur_l.vtp'.
+[2026-10-17 15:12:08.645] [warning] Couldn't find file 'tibia_l.vtp'.
+[2026-10-17 15:12:08.645] [warning] Couldn't find file 'l_fibula.vtp'.
+[2026-10-17 15:12:08.645] [warning] Couldn't find file 'l_talus.vtp'.
+[2026-10-17 15:12:08.645] [warning] Couldn't find file 'l_foot.vtp'.
+[2026-10-17 15:12:08.645] [warning] Couldn't find file 'l_bofoot.vtp'.
+[2026-10-17 15:12:08.645] [warning] Couldn't find file 'hat_spine.vtp'.
+[2026-10-17 15:12:08.645] [warning] Couldn't find file 'hat_jaw.vtp'.
+[2026-10-17 15:12:08.645] [warning] Couldn't find file 'hat_skull.vtp'.
+[2026-10-17 15:12:08.645] [warning] Couldn't find file 'hat_ribs.vtp'.
+[2026-10-18 15:11:30.122] [warning] Couldn't find file 'treadmill.vtp'.
+[2026-10-18 15:11:30.123] [warning] Couldn't find file 'sacrum.vtp'.
+[2026-10-18 15:11:30.123] [warning] Couldn't find file 'pelvis.vtp'.
+[2026-10-18 15:11:30.123] [warning] Couldn't find file 'l_pelvis.vtp'.
+[2026-10-18 15:11:30.123] [warning] Couldn't find file 'femur_r.vtp'.
+[2026-10-18 15:11:30.123] [warning] Couldn't find file 'tibia_r.vtp'.
+[2026-10-18 15:11:30.123] [warning] Couldn't find file 'fibula.vtp'.
+[2026-10-18 15:11:30.123] [warning] Couldn't find file 'talus.vtp'.
+[2026-10-18 15:11:30.123] [warning] Couldn't find file 'foot.vtp'.
+[2026-10-18 15:11:30.123] [warning] Couldn't find file 'bofoot.vtp'.
+[2026-10-18 15:11:30.124] [warning] Couldn't find file 'femur_l.vtp'.
+[2026-10-18 15:11:30.124] [warning] Couldn't find file 'tibia_l.vtp'.
+[2026-10-18 15:11:30.124] [warning] Couldn't find file 'l_fibula.vtp'.
+[2026-10-18 15:11:30.124] [warning] Couldn't find file 'l_talus.vtp'.
+[2026-10-18 15:11:30.124] [warning] Couldn't find file 'l_foot.vtp'.
+[2026-10-18 15:11:30.124] [warning] Couldn't find file 'l_bofoot.vtp'.
+[2026-10-18 15:11:30.124] [warning] Couldn't find file 'hat_spine.vtp'.
+[2026-10-18 15:11:30.124] [warning] Couldn't find file 'hat_jaw.vtp'.
+[2026-10-18 15:11:30.124] [warning] Couldn't find file 'hat_skull.vtp'.
+[2026-10-18 15:11:30.124] [warning] Couldn't find file 'hat_ribs.vtp'.
+[2026-10-18 15:11:30.436] [warning] Couldn't find file 'treadmill.vtp'.
+[2026-10-18 15:11:30.436] [warning] Couldn't find file 'sacrum.vtp'.
+[2026-10-18 15:11:30.437] [warning] Couldn't find file 'pelvis.vtp'.
+[2026-10-18 15:11:30.437] [warning] Couldn't find file 'l_pelvis.vtp'.
+[2026-10-18 15:11:30.437] [warning] Couldn't find file 'femur_r.vtp'.
+[2026-10-18 15:11:30.437] [warning] Couldn't find file 'tibia_r.vtp'.
+[2026-10-18 15:11:30.437] [warning] Couldn't find file 'fibula.vtp'.
+[2026-10-18 15:11:30.437] [warning] Couldn't find file 'talus.vtp'.
+[2026-10-18 15:11:30.437] [warning] Couldn't find file 'foot.vtp'.
+[2026-10-18 15:11:30.437] [warning] Couldn't find file 'bofoot.vtp'.
+[2026-10-18 15:11:30.438] [warning] Couldn't find file 'femur_l.vtp'.
+[2026-10-18 15:11:30.438] [warning] Couldn't find file 'tibia_l.vtp'.
+[2026-10-18 15:11:30.438] [warning] Couldn't find file 'l_fibula.vtp'.
+[2026-10-18 15:11:30.438] [warning] Couldn't find file 'l_talus.vtp'.
+[2026-10-18 15:11:30.438] [warning] Couldn't find file 'l_foot.vtp'.
+[2026-10-18 15:11:30.438] [warning] Couldn't find file 'l_bofoot.vtp'.
+[2026-10-18 15:11:30.438] [warning] Couldn't find file 'hat_spine.vtp'.
+[2026-10-18 15:11:30.438] [warning] Couldn't find file 'hat_jaw.vtp'.
+[2026-10-18 15:11:30.438] [warning] Couldn't find file 'hat_skull.vtp'.
+[2026-10-18 15:11:30.438] [warning] Couldn't find file 'hat_ribs.vtp'.
+[2026-10-18 15:11:30.438] [warning] Couldn't find file 'ExoP.vtp'.
+[2026-10-18 15:11:30.438] [warning] Couldn't find file 'ThighR.STL'.
+[2026-10-18 15:11:30.438] [warning] Couldn't find file 'ThighL.STL'.
+[2026-10-18 15:11:31.134] [warning] Couldn't find file 'treadmill.vtp'.
+[2026-10-18 15:11:31.134] [warning] Couldn't find file 'sacrum.vtp'.
+[2026-10-18 15:11:31.134] [warning] Couldn't find file 'pelvis.vtp'.
+[2026-10-18 15:11:31.134] [warning] Couldn't find file 'l_pelvis.vtp'.
+[2026-10-18 15:11:31.135] [warning] Couldn't find file 'femur_r.vtp'.
+[2026-10-18 15:11:31.135] [warning] Couldn't find file 'tibia_r.vtp'.
+[2026-10-18 15:11:31.135] [warning] Couldn't find file 'fibula.vtp'.
+[2026-10-18 15:11:31.135] [warning] Couldn't find file 'talus.vtp'.
+[2026-10-18 15:11:31.135] [warning] Couldn't find file 'foot.vtp'.
+[2026-10-18 15:11:31.135] [warning] Couldn't find file 'bofoot.vtp'.
+[2026-10-18 15:11:31.135] [warning] Couldn't find file 'femur_l.vtp'.
+[2026-10-18 15:11:31.135] [warning] Couldn't find file 'tibia_l.vtp'.
+[2026-10-18 15:11:31.135] [warning] Couldn't find file 'l_fibula.vtp'.
+[2026-10-18 15:11:31.136] [warning] Couldn't find file 'l_talus.vtp'.
+[2026-10-18 15:11:31.136] [warning] Couldn't find file 'l_foot.vtp'.
+[2026-10-18 15:11:31.136] [warning] Couldn't find file 'l_bofoot.vtp'.
+[2026-10-18 15:11:31.136] [warning] Couldn't find file 'hat_spine.vtp'.
+[2026-10-18 15:11:31.136] [warning] Couldn't find file 'hat_jaw.vtp'.
+[2026-10-18 15:11:31.136] [warning] Couldn't find file 'hat_skull.vtp'.
+[2026-10-18 15:11:31.136] [warning] Couldn't find file 'hat_ribs.vtp'.
+[2026-10-18 15:11:31.136] [warning] Couldn't find file 'ExoP.vtp'.
+[2026-10-18 15:11:31.136] [warning] Couldn't find file 'ThighR.STL'.
+[2026-10-18 15:11:31.136] [warning] Couldn't find file 'ThighL.STL'.
+[2026-10-18 15:22:09.783] [warning] Couldn't find file 'treadmill.vtp'.
+[2026-10-18 15:22:09.784] [warning] Couldn't find file 'sacrum.vtp'.
+[2026-10-18 15:22:09.784] [warning] Couldn't find file 'pelvis.vtp'.
+[2026-10-18 15:22:09.784] [warning] Couldn't find file 'l_pelvis.vtp'.
+[2026-10-18 15:22:09.784] [warning] Couldn't find file 'femur_r.vtp'.
+[2026-10-18 15:22:09.784] [warning] Couldn't find file 'tibia_r.vtp'.
+[2026-10-18 15:22:09.784] [warning] Couldn't find file 'fibula.vtp'.
+[2026-10-18 15:22:09.784] [warning] Couldn't find file 'talus.vtp'.
+[2026-10-18 15:22:09.785] [warning] Couldn't find file 'foot.vtp'.
+[2026-10-18 15:22:09.785] [warning] Couldn't find file 'bofoot.vtp'.
+[2026-10-18 15:22:09.785] [warning] Couldn't find file 'femur_l.vtp'.
+[2026-10-18 15:22:09.785] [warning] Couldn't find file 'tibia_l.vtp'.
+[2026-10-18 15:22:09.785] [warning] Couldn't find file 'l_fibula.vtp'.
+[2026-10-18 15:22:09.785] [warning] Couldn't find file 'l_talus.vtp'.
+[2026-10-18 15:22:09.785] [warning] Couldn't find file 'l_foot.vtp'.
+[2026-10-18 15:22:09.785] [warning] Couldn't find file 'l_bofoot.vtp'.
+[2026-10-18 15:22:09.785] [warning] Couldn't find file 'hat_spine.vtp'.
+[2026-10-18 15:22:09.786] [warning] Couldn't find file 'hat_jaw.vtp'.
+[2026-10-18 15:22:09.786] [warning] Couldn't find file 'hat_skull.vtp'.
+[2026-10-18 15:22:09.786] [warning] Couldn't find file 'hat_ribs.vtp'.
+[2026-10-18 15:22:09.786] [warning] Couldn't find file 'ExoP.vtp'.
+[2026-10-18 15:22:09.786] [warning] Couldn't find file 'ThighR.STL'.
+[2026-10-18 15:22:09.786] [warning] Couldn't find file 'ThighL.STL'.
+[2026-10-18 15:22:10.034] [warning] Couldn't find file 'treadmill.vtp'.
+[2026-10-18 15:22:10.034] [warning] Couldn't find file 'sacrum.vtp'.
+[2026-10-18 15:22:10.034] [warning] Couldn't find file 'pelvis.vtp'.
+[2026-10-18 15:22:10.034] [warning] Couldn't find file 'l_pelvis.vtp'.
+[2026-10-18 15:22:10.034] [warning] Couldn't find file 'femur_r.vtp'.
+[2026-10-18 15:22:10.034] [warning] Couldn't find file 'tibia_r.vtp'.
+[2026-10-18 15:22:10.034] [warning] Couldn't find file 'fibula.vtp'.
+[2026-10-18 15:22:10.035] [warning] Couldn't find file 'talus.vtp'.
+[2026-10-18 15:22:10.035] [warning] Couldn't find file 'foot.vtp'.
+[2026-10-18 15:22:10.035] [warning] Couldn't find file 'bofoot.vtp'.
+[2026-10-18 15:22:10.035] [warning] Couldn't find file 'femur_l.vtp'.
+[2026-10-18 15:22:10.035] [warning] Couldn't find file 'tibia_l.vtp'.
+[2026-10-18 15:22:10.035] [warning] Couldn't find file 'l_fibula.vtp'.
+[2026-10-18 15:22:10.035] [warning] Couldn't find file 'l_talus.vtp'.
+[2026-10-18 15:22:10.035] [warning] Couldn't find file 'l_foot.vtp'.
+[2026-10-18 15:22:10.035] [warning] Couldn't find file 'l_bofoot.vtp'.
+[2026-10-18 15:22:10.035] [warning] Couldn't find file 'hat_spine.vtp'.
+[2026-10-18 15:22:10.035] [warning] Couldn't find file 'hat_jaw.vtp'.
+[2026-10-18 15:22:10.035] [warning] Couldn't find file 'hat_skull.vtp'.
+[2026-10-18 15:22:10.035] [warning] Couldn't find file 'hat_ribs.vtp'.
+[2026-10-18 15:22:10.036] [warning] Couldn't find file 'ExoP.vtp'.
+[2026-10-18 15:22:10.036] [warning] Couldn't find file 'ThighR.STL'.
+[2026-10-18 15:22:10.036] [warning] Couldn't find file 'ThighL.STL'.
+[2026-10-18 15:22:10.783] [warning] Couldn't find file 'treadmill.vtp'.
+[2026-10-18 15:22:10.783] [warning] Couldn't find file 'sacrum.vtp'.
+[2026-10-18 15:22:10.784] [warning] Couldn't find file 'pelvis.vtp'.
+[2026-10-18 15:22:10.784] [warning] Couldn't find file 'l_pelvis.vtp'.
+[2026-10-18 15:22:10.784] [warning] Couldn't find file 'femur_r.vtp'.
+[2026-10-18 15:22:10.784] [warning] Couldn't find file 'tibia_r.vtp'.
+[2026-10-18 15:22:10.784] [warning] Couldn't find file 'fibula.vtp'.
+[2026-10-18 15:22:10.784] [warning] Couldn't find file 'talus.vtp'.
+[2026-10-18 15:22:10.784] [warning] Couldn't find file 'foot.vtp'.
+[2026-10-18 15:22:10.785] [warning] Couldn't find file 'bofoot.vtp'.
+[2026-10-18 15:22:10.785] [warning] Couldn't find file 'femur_l.vtp'.
+[2026-10-18 15:22:10.785] [warning] Couldn't find file 'tibia_l.vtp'.
+[2026-10-18 15:22:10.785] [warning] Couldn't find file 'l_fibula.vtp'.
+[2026-10-18 15:22:10.785] [warning] Couldn't find file 'l_talus.vtp'.
+[2026-10-18 15:22:10.785] [warning] Couldn't find file 'l_foot.vtp'.
+[2026-10-18 15:22:10.785] [warning] Couldn't find file 'l_bofoot.vtp'.
+[2026-10-18 15:22:10.785] [warning] Couldn't find file 'hat_spine.vtp'.
+[2026-10-18 15:22:10.785] [warning] Couldn't find file 'hat_jaw.vtp'.
+[2026-10-18 15:22:10.786] [warning] Couldn't find file 'hat_skull.vtp'.
+[2026-10-18 15:22:10.786] [warning] Couldn't find file 'hat_ribs.vtp'.
+[2026-10-18 15:22:10.786] [warning] Couldn't find file 'ExoP.vtp'.
+[2026-10-18 15:22:10.786] [warning] Couldn't find file 'ThighR.STL'.
+[2026-10-18 15:22:10.786] [warning] Couldn't find file 'ThighL.STL'.
+[2026-10-18 15:28:20.203] [info] Loaded model scaled_26mk from file Results/10_16_2026 AB01/model/Static_Exo_scaled.osim
+[2026-10-18 15:28:20.203] [warning] Couldn't find file 'treadmill.vtp'.
+[2026-10-18 15:28:20.203] [warning] Couldn't find file 'sacrum.vtp'.
+[2026-10-18 15:28:20.203] [warning] Couldn't find file 'pelvis.vtp'.
+[2026-10-18 15:28:20.203] [warning] Couldn't find file 'l_pelvis.vtp'.
+[2026-10-18 15:28:20.203] [warning] Couldn't find file 'femur_r.vtp'.
+[2026-10-18 15:28:20.203] [warning] Couldn't find file 'tibia_r.vtp'.
+[2026-10-18 15:28:20.203] [warning] Couldn't find file 'fibula.vtp'.
+[2026-10-18 15:28:20.203] [warning] Couldn't find file 'talus.vtp'.
+[2026-10-18 15:28:20.203] [warning] Couldn't find file 'foot.vtp'.
+[2026-10-18 15:28:20.204] [warning] Couldn't find file 'bofoot.vtp'.
+[2026-10-18 15:28:20.204] [warning] Couldn't find file 'femur_l.vtp'.
+[2026-10-18 15:28:20.204] [warning] Couldn't find file 'tibia_l.vtp'.
+[2026-10-18 15:28:20.204] [warning] Couldn't find file 'l_fibula.vtp'.
+[2026-10-18 15:28:20.204] [warning] Couldn't find file 'l_talus.vtp'.
+[2026-10-18 15:28:20.204] [warning] Couldn't find file 'l_foot.vtp'.
+[2026-10-18 15:28:20.204] [warning] Couldn't find file 'l_bofoot.vtp'.
+[2026-10-18 15:28:20.204] [warning] Couldn't find file 'hat_spine.vtp'.
+[2026-10-18 15:28:20.204] [warning] Couldn't find file 'hat_jaw.vtp'.
+[2026-10-18 15:28:20.204] [warning] Couldn't find file 'hat_skull.vtp'.
+[2026-10-18 15:28:20.204] [warning] Couldn't find file 'hat_ribs.vtp'.
+[2026-10-18 15:28:20.204] [warning] Couldn't find file 'ExoP.vtp'.
+[2026-10-18 15:28:20.204] [warning] Couldn't find file 'ThighR.STL'.
+[2026-10-18 15:28:20.204] [warning] Couldn't find file 'ThighL.STL'.
+[2026-10-18 15:28:51.898] [info] Loaded model 3DGaitModel2392 from file unscaled model/gait2392_Oz_NoPsis_wExo_38mk.osim
+[2026-10-18 15:28:51.899] [warning] Couldn't find file 'treadmill.vtp'.
+[2026-10-18 15:28:51.899] [warning] Couldn't find file 'sacrum.vtp'.
+[2026-10-18 15:28:51.899] [warning] Couldn't find file 'pelvis.vtp'.
+[2026-10-18 15:28:51.899] [warning] Couldn't find file 'l_pelvis.vtp'.
+[2026-10-18 15:28:51.899] [warning] Couldn't find file 'femur_r.vtp'.
+[2026-10-18 15:28:51.899] [warning] Couldn't find file 'tibia_r.vtp'.
+[2026-10-18 15:28:51.899] [warning] Couldn't find file 'fibula.vtp'.
+[2026-10-18 15:28:51.899] [warning] Couldn't find file 'talus.vtp'.
+[2026-10-18 15:28:51.899] [warning] Couldn't find file 'foot.vtp'.
+[2026-10-18 15:28:51.899] [warning] Couldn't find file 'bofoot.vtp'.
+[2026-10-18 15:28:51.899] [warning] Couldn't find file 'femur_l.vtp'.
+[2026-10-18 15:28:51.899] [warning] Couldn't find file 'tibia_l.vtp'.
+[2026-10-18 15:28:51.899] [warning] Couldn't find file 'l_fibula.vtp'.
+[2026-10-18 15:28:51.899] [warning] Couldn't find file 'l_talus.vtp'.
+[2026-10-18 15:28:51.899] [warning] Couldn't find file 'l_foot.vtp'.
+[2026-10-18 15:28:51.899] [warning] Couldn't find file 'l_bofoot.vtp'.
+[2026-10-18 15:28:51.899] [warning] Couldn't find file 'hat_spine.vtp'.
+[2026-10-18 15:28:51.899] [warning] Couldn't find file 'hat_jaw.vtp'.
+[2026-10-18 15:28:51.900] [warning] Couldn't find file 'hat_skull.vtp'.
+[2026-10-18 15:28:51.900] [warning] Couldn't find file 'hat_ribs.vtp'.
+[2026-10-18 15:28:51.900] [warning] Couldn't find file 'ExoP.vtp'.
+[2026-10-18 15:28:51.900] [warning] Couldn't find file 'ThighR.STL'.
+[2026-10-18 15:28:51.900] [warning] Couldn't find file 'ThighL.STL'.
+[2026-10-18 15:52:32.606] [info] Loaded model 3DGaitModel2392 from file C:\CMU\MetaMobility Lab\Personal Code\git_clone\sim2real\unscaled model\gait2392_Oz_NoPsis_wExo_38mk.osim
+[2026-10-18 15:52:32.607] [warning] Couldn't find file 'treadmill.vtp'.
+[2026-10-18 15:52:32.607] [warning] Couldn't find file 'sacrum.vtp'.
+[2026-10-18 15:52:32.607] [warning] Couldn't find file 'pelvis.vtp'.
+[2026-10-18 15:52:32.607] [warning] Couldn't find file 'l_pelvis.vtp'.
+[2026-10-18 15:52:32.608] [warning] Couldn't find file 'femur_r.vtp'.
+[2026-10-18 15:52:32.608] [warning] Couldn't find file 'tibia_r.vtp'.
+[2026-10-18 15:52:32.608] [warning] Couldn't find file 'fibula.vtp'.
+[2026-10-18 15:52:32.608] [warning] Couldn't find file 'talus.vtp'.
+[2026-10-18 15:52:32.608] [warning] Couldn't find file 'foot.vtp'.
+[2026-10-18 15:52:32.608] [warning] Couldn't find file 'bofoot.vtp'.
+[2026-10-18 15:52:32.608] [warning] Couldn't find file 'femur_l.vtp'.
+[2026-10-18 15:52:32.608] [warning] Couldn't find file 'tibia_l.vtp'.
+[2026-10-18 15:52:32.608] [warning] Couldn't find file 'l_fibula.vtp'.
+[2026-10-18 15:52:32.608] [warning] Couldn't find file 'l_talus.vtp'.
+[2026-10-18 15:52:32.608] [warning] Couldn't find file 'l_foot.vtp'.
+[2026-10-18 15:52:32.608] [warning] Couldn't find file 'l_bofoot.vtp'.
+[2026-10-18 15:52:32.608] [warning] Couldn't find file 'hat_spine.vtp'.
+[2026-10-18 15:52:32.608] [warning] Couldn't find file 'hat_jaw.vtp'.
+[2026-10-18 15:52:32.608] [warning] Couldn't find file 'hat_skull.vtp'.
+[2026-10-18 15:52:32.608] [warning] Couldn't find file 'hat_ribs.vtp'.
+[2026-10-18 15:52:32.608] [warning] Couldn't find file 'ExoP.vtp'.
+[2026-10-18 15:52:32.608] [warning] Couldn't find file 'ThighR.STL'.
+[2026-10-18 15:52:32.608] [warning] Couldn't find file 'ThighL.STL'.
