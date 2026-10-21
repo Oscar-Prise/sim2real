@@ -2,7 +2,7 @@
 <OpenSimDocument Version="40500">
 	<InverseKinematicsTool>
 		<!--The time range for the study.-->
-		<time_range>0 29.989999999999998</time_range>
+		<time_range>0 29.75</time_range>
 		<!--Name of the resulting inverse kinematics motion (.mot) file.-->
 		<output_motion_file></output_motion_file>
 		<!--Markers and coordinates to be considered (tasks) and their weightings. The sum of weighted-squared task errors composes the cost function.-->
@@ -164,11 +164,59 @@
 					<!--Weight given to the task when solving inverse kinematics problems, default is 0.-->
 					<weight>20</weight>
 				</IKMarkerTask>
+				<IKMarkerTask name="LPSIS">
+					<!--Whether or not this task will be used during inverse kinematics solve, default is true.-->
+					<apply>true</apply>
+					<!--Weight given to the task when solving inverse kinematics problems, default is 0.-->
+					<weight>0</weight>
+				</IKMarkerTask>
+				<IKMarkerTask name="RPSIS">
+					<!--Whether or not this task will be used during inverse kinematics solve, default is true.-->
+					<apply>true</apply>
+					<!--Weight given to the task when solving inverse kinematics problems, default is 0.-->
+					<weight>0</weight>
+				</IKMarkerTask>
+				<IKMarkerTask name="RC1">
+					<!--Whether or not this task will be used during inverse kinematics solve, default is true.-->
+					<apply>true</apply>
+					<!--Weight given to the task when solving inverse kinematics problems, default is 0.-->
+					<weight>0</weight>
+				</IKMarkerTask>
+				<IKMarkerTask name="RC2">
+					<!--Whether or not this task will be used during inverse kinematics solve, default is true.-->
+					<apply>true</apply>
+					<!--Weight given to the task when solving inverse kinematics problems, default is 0.-->
+					<weight>0</weight>
+				</IKMarkerTask>
+				<IKMarkerTask name="RC3">
+					<!--Whether or not this task will be used during inverse kinematics solve, default is true.-->
+					<apply>true</apply>
+					<!--Weight given to the task when solving inverse kinematics problems, default is 0.-->
+					<weight>0</weight>
+				</IKMarkerTask>
+				<IKMarkerTask name="LC1">
+					<!--Whether or not this task will be used during inverse kinematics solve, default is true.-->
+					<apply>true</apply>
+					<!--Weight given to the task when solving inverse kinematics problems, default is 0.-->
+					<weight>0</weight>
+				</IKMarkerTask>
+				<IKMarkerTask name="LC2">
+					<!--Whether or not this task will be used during inverse kinematics solve, default is true.-->
+					<apply>true</apply>
+					<!--Weight given to the task when solving inverse kinematics problems, default is 0.-->
+					<weight>0</weight>
+				</IKMarkerTask>
+				<IKMarkerTask name="LC3">
+					<!--Whether or not this task will be used during inverse kinematics solve, default is true.-->
+					<apply>true</apply>
+					<!--Weight given to the task when solving inverse kinematics problems, default is 0.-->
+					<weight>0</weight>
+				</IKMarkerTask>
 			</objects>
 			<groups />
 		</IKTaskSet>
 		<!--TRC file (.trc) containing the time history of observations of marker positions obtained during a motion capture experiment. Markers in this file that have a corresponding task and model marker are included.-->
-		<marker_file>../Data/10_16_2026 AB01/LG_1p2_NoExo_shoes.trc</marker_file>
+		<marker_file>../Data/10_18_2026 AB01/NoExo_LG_1p2.trc</marker_file>
 		<!--The name of the storage (.sto or .mot) file containing the time history of coordinate observations. Coordinate values from this file are included if there is a corresponding model coordinate and task. -->
 		<coordinate_file>Unassigned</coordinate_file>
 	</InverseKinematicsTool>

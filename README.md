@@ -14,16 +14,16 @@ sim2real/
 ├── scripts/
 │   ├── config.py                    IK marker weights, ID filter, subject lookup
 │   ├── scale_model.py               unscaled model + static .trc -> scaled model (paths at the top)
-│   ├── run_ik_id.py                 scaled model + trial .trc / .mot -> IK + ID (paths at the top)
+│   ├── run_ik_id.py                 batch IK + ID of a list of trials (paths at the top); scales the
+│   │                                model first if it isn't in Results/<session>/model/ yet
 │   ├── hip_from_femur.py            scaled model + trial .trc -> GTR rebuilt from LE / ME (.trc with
 │   │                                RGTR_est / LGTR_est added), error plots
-│   ├── plot_ik_id.py                plot one trial over time and per gait cycle (files + options at the top)
+│   ├── util_IKIDGaitPlot.py         IK and ID figures of one trial over the gait cycle (settings at the top)
 │   ├── util_marker_report.py        marker-error tables printed by scale_model.py and run_ik_id.py
 │   ├── util_progress_bar.py         progress bar
 │   └── util_stl2vtp.py              convert .stl geometry to .vtp
 ├── Results/<session>/               everything generated (safe to delete)
-│   ├── model/standing_scaled.osim   final scaled model (the one to use)
-│   ├── model/intermediate/          in-between scaling outputs (for debugging only)
+│   ├── model/<static>_scaled.osim   scaled model (only file kept from scaling)
 │   └── <trial>/                     IK .mot, ID .sto, marker errors, external loads .xml
 └── environment.yml
 ```
@@ -33,15 +33,16 @@ sim2real/
 conda env create -f environment.yml   # once
 conda activate OpenSimPyEnv
 
-python scripts/scale_model.py      # 1. once per session: makes the scaled model
-python scripts/run_ik_id.py        # 2. IK + ID with that model
-python scripts/hip_from_femur.py   #    GTR reconstruction with that model (needs step 1 only)
-python scripts/plot_ik_id.py       # 3. plots from step 2
+python scripts/run_ik_id.py        # 1. IK + ID of every trial in TRIALS (scales the model if needed)
+python scripts/scale_model.py      #    optional: (re)scale on its own, e.g. after changing the template
+python scripts/hip_from_femur.py   #    GTR reconstruction with the scaled model
+python scripts/util_IKIDGaitPlot.py   # 2. plots from step 1
 ```
 Each script reads its inputs from the settings at its top and only writes its own outputs.
 
-New session: in `scale_model.py` set `STATIC_TRC`, `STATIC_TIME_WINDOW`, `SUBJECT_ID`, `OUTPUT_MODEL`
-(and the model / template for the marker protocol), then point `SCALED_MODEL` in `run_ik_id.py` and
-`hip_from_femur.py` to that output. Make sure the subject is listed in `Subject Information.txt`.
+New session: in `run_ik_id.py` set `SESSION`, `TRIALS` (any number), `STATIC_TRIAL`, `STATIC_TIME_WINDOW`,
+`SUBJECT_ID` and the model / scale template / IK setup for the marker protocol. The scaled model is
+loaded from `Results/<session>/model/<STATIC_TRIAL>_scaled.osim`; delete it to force a rescale.
+Make sure the subject is listed in `Subject Information.txt`.
 
 Raw Vicon data default path: `C:\Users\oscar\Documents\Vicon & Treadmill Data`

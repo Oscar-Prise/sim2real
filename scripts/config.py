@@ -1,5 +1,5 @@
 """Processing settings for run_ik_id.py. Data paths are set at the top of run_ik_id.py,
-plot files at the top of plot_ik_id.py.
+plot files at the top of util_IKIDGaitPlot.py.
 
 Subject mass / height / age are read from 'Subject Information.txt' by subject id (e.g. AB01).
 """

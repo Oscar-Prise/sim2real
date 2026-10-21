@@ -13,6 +13,7 @@ Input: the unscaled model and the static .trc. Output: the scaled model (OUTPUT_
 run_ik_id.py and hip_from_femur.py then load.
 """
 import os
+import tempfile
 
 import numpy as np
 import opensim as osm
@@ -29,20 +30,22 @@ osm.Logger.setLevelString('warn')
 # STATIC_TRC is the standing trial used to scale the model. STATIC_TIME_WINDOW is the
 # (start, end) in seconds averaged for scaling, or None to use the whole trial.
 # SUBJECT_ID is looked up in 'Subject Information.txt' for mass / height / age.
-# The scaled model is written to OUTPUT_MODEL; in-between files go next to it in intermediate/.
+# The scaled model is written to OUTPUT_MODEL (the only file kept).
 # Any path can be replaced by a full path, e.g. r'C:\Users\oscar\Documents\some_session\standing.trc'.
 _ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-STATIC_TRC = os.path.join(_ROOT, 'Data', '10_16_2026 AB01', 'Static_Exo.trc')
-STATIC_TIME_WINDOW = None   # whole trial; set (start, end) in seconds to average a quiet window
+STATIC_TRC = os.path.join(_ROOT, 'Data', '10_18_2026 AB01', 'NoExo_Static.trc')
+STATIC_TIME_WINDOW = (3.0, 3.03)   # None = whole trial; (start, end) in seconds to average a quiet window
 SUBJECT_ID = 'AB01'
-OUTPUT_MODEL = os.path.join(_ROOT, 'Results', '10_16_2026 AB01', 'model', 'Static_Exo_scaled.osim')
+OUTPUT_MODEL = os.path.join(_ROOT, 'Results', '10_18_2026 AB01', 'model', 'NoExo_Static_scaled.osim')
 
 # Model and template must match the marker protocol of the session:
 #   old protocol (PSIS, thigh clusters): gait2392_MovedPCIS.osim, scale_setup_template.xml
 #   26-marker protocol:                  gait2392_Oz_NoPsis_26mk.osim, scale_26mk_template.xml
-GENERIC_MODEL = os.path.join(_ROOT, 'unscaled model', 'gait2392_Oz_NoPsis_wExo_38mk.osim')
-SCALE_SETUP_TEMPLATE = os.path.join(_ROOT, 'setup', 'scale_38mk_template.xml')
+#   38-marker protocol (exo):            gait2392_Oz_NoPsis_wExo_38mk.osim, scale_38mk_template.xml
+#   28 markers + thigh clusters (PSIS):  gait2392_NoExo_Clust_n_Psis.osim, scale_NoExo_Clust_n_Psis.xml
+GENERIC_MODEL = os.path.join(_ROOT, 'unscaled model', 'gait2392_NoExo_Clust_n_Psis.osim')
+SCALE_SETUP_TEMPLATE = os.path.join(_ROOT, 'setup', 'scale_NoExo_Clust_n_Psis.xml')
 
 
 def _time_range(trc_file, t_start=None, t_end=None):
@@ -75,10 +78,18 @@ def scale_model(setup_template_xml, generic_model_file, static_trc_file,
     generic_model_file = os.path.abspath(generic_model_file)
     static_trc_file = os.path.abspath(static_trc_file)
     output_model_file = os.path.abspath(output_model_file)
+    os.makedirs(os.path.dirname(output_model_file), exist_ok=True)
 
-    # Only the final model sits next to output_model_file; in-between files go to intermediate/
-    intermediate_dir = os.path.join(os.path.dirname(output_model_file), 'intermediate')
-    os.makedirs(intermediate_dir, exist_ok=True)
+    # Only the final model is kept; the in-between files are needed for the report, then deleted
+    with tempfile.TemporaryDirectory(ignore_cleanup_errors=True) as intermediate_dir:
+        return _run_scale_tool(setup_template_xml, generic_model_file, static_trc_file, subject_mass_kg,
+                               output_model_file, t_start, t_end, marker_set_file, subject_height_m,
+                               subject_age, intermediate_dir)
+
+
+def _run_scale_tool(setup_template_xml, generic_model_file, static_trc_file, subject_mass_kg,
+                    output_model_file, t_start, t_end, marker_set_file, subject_height_m,
+                    subject_age, intermediate_dir):
     stage1_model_file = os.path.join(intermediate_dir, 'stage1_segments_scaled.osim')
     scale_factors_file = os.path.join(intermediate_dir, 'stage1_scale_factors.xml')
     placed_markers_file = os.path.join(intermediate_dir, 'stage2_placed_markers.xml')
