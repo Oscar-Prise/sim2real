@@ -25,7 +25,7 @@ sim2real/
 │   ├── util_progress_bar.py         progress bar
 │   └── util_stl2vtp.py              convert .stl geometry to .vtp
 ├── Results/<session>/               everything generated (safe to delete)
-│   ├── model/<static>_scaled.osim   scaled model (only file kept from scaling)
+│   ├── model/<static>_scaled.osim   scaled model + its scale factors (<static>_scaled_factors.xml)
 │   ├── bodykinematics/              figures of util_BodyKinematicsPlot.py
 │   └── <trial>/                     IK .mot, ID .sto, marker errors, external loads .xml,
 │                                    BodyKinematics pos / vel / acc .sto
@@ -46,9 +46,16 @@ python scripts/util_BodyKinematicsPlot.py  #    segment-vs-segment plots from st
 ```
 Each script reads its inputs from the settings at its top and only writes its own outputs.
 
-New session: in `run_ik_id.py` set `SESSION`, `TRIALS` (any number), `STATIC_TRIAL`, `STATIC_TIME_WINDOW`,
-`SUBJECT_ID` and the model / scale template / IK setup for the marker protocol. The scaled model is
-loaded from `Results/<session>/model/<STATIC_TRIAL>_scaled.osim`; delete it to force a rescale.
+New session: in `run_ik_id.py` set `SESSION`, `TRIALS` (any number), `SUBJECT_ID` and, per condition in
+`MODELS`, the static trial / time window / unscaled model / scale template / IK setup. A trial uses the
+condition its name starts with (`NoExo_...`, `ExoOn_...`). Unscaled models and scale templates live in
+`Data/<session>/Model and scale/` (`MODEL_DIR`); the scaled models `<static>_scaled.osim` (+ `_factors.xml`)
+are written to `Results/<session>/model/` and loaded if present; delete them to force a rescale. For a subject-specific
+human-only model, `scripts/add_exo_to_model.py` makes its exo version (exo bodies, joints and markers).
+
+One skeleton per subject: the human is scaled only on the NoExo static. The ExoOn model takes the
+NoExo segment scale factors and masses (`body_from='NoExo'`); only the exo parts are scaled and the
+markers placed on the ExoOn static. Rescaling NoExo automatically rebuilds ExoOn on the next run.
 Make sure the subject is listed in `Subject Information.txt`.
 
 Raw Vicon data default path: `C:\Users\oscar\Documents\Vicon & Treadmill Data`

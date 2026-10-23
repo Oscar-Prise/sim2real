@@ -1,0 +1,78 @@
+[2026-10-22 21:05:28.022] [info] Set log level to Info.
+[2026-10-22 21:05:28.116] [info] Loaded marker file c:\CMU\MetaMobility Lab\Personal Code\git_clone\sim2real\Data\10_18_2026 AB01\ExoOn_Static.trc (46 markers, 976 frames)
+[2026-10-22 21:05:28.184] [info] Loaded model scaled_NoExo_Clust_n_Psis from file c:\CMU\MetaMobility Lab\Personal Code\git_clone\sim2real\Results\10_18_2026 AB01\model\NoExo_Static_scaled.osim
+[2026-10-22 21:05:28.582] [info] Processing subject scaled_Exo_Clust_n_Psis...
+[2026-10-22 21:05:28.582] [info] Step 1: Loading generic model
+[2026-10-22 21:05:28.652] [info] Loaded model 3DGaitModel2392 from file c:\CMU\MetaMobility Lab\Personal Code\git_clone\sim2real\unscaled model\gait2392_Exo_Clust_n_Psis.osim
+[2026-10-22 21:05:29.266] [info] Step 2: Scaling generic model
+[2026-10-22 21:05:29.374] [info] Loaded marker file c:\CMU\MetaMobility Lab\Personal Code\git_clone\sim2real\Data\10_18_2026 AB01\ExoOn_Static.trc (46 markers, 976 frames)
+[2026-10-22 21:05:29.375] [info] Measurement 'pelvis_y'
+[2026-10-22 21:05:29.375] [info] 	pair 0 (LASIS, RASIS): model = 0.256, experimental = 0.275178
+[2026-10-22 21:05:29.375] [info] 	overall scale factor = 1.07492
+[2026-10-22 21:05:29.375] [info] Measurement 'pelvis_x'
+[2026-10-22 21:05:29.375] [info] 	pair 0 (LASIS, LPSIS): model = 0.183683, experimental = 0.216864
+[2026-10-22 21:05:29.375] [info] 	pair 1 (RASIS, RPSIS): model = 0.183683, experimental = 0.219065
+[2026-10-22 21:05:29.375] [info] 	overall scale factor = 1.18663
+[2026-10-22 21:05:29.375] [info] Measurement 'pelvis_z'
+[2026-10-22 21:05:29.375] [info] 	pair 0 (LASIS, RASIS): model = 0.256, experimental = 0.275178
+[2026-10-22 21:05:29.375] [info] 	overall scale factor = 1.07492
+[2026-10-22 21:05:29.375] [info] Measurement 'femur_y'
+[2026-10-22 21:05:29.375] [info] 	pair 0 (LASIS, LLE): model = 0.495515, experimental = 0.478946
+[2026-10-22 21:05:29.375] [info] 	pair 1 (RASIS, RLE): model = 0.495515, experimental = 0.480547
+[2026-10-22 21:05:29.375] [info] 	overall scale factor = 0.968178
+[2026-10-22 21:05:29.375] [info] Measurement 'shank_y'
+[2026-10-22 21:05:29.375] [info] 	pair 0 (LTT, LMA): model = 0.315606, experimental = 0.326016
+[2026-10-22 21:05:29.375] [info] 	pair 1 (LHF, LLA): model = 0.338104, experimental = 0.363363
+[2026-10-22 21:05:29.375] [info] 	pair 2 (RMA, RTT): model = 0.315606, experimental = 0.331768
+[2026-10-22 21:05:29.375] [info] 	pair 3 (RLA, RHF): model = 0.338104, experimental = 0.361047
+[2026-10-22 21:05:29.375] [info] 	overall scale factor = 1.05669
+[2026-10-22 21:05:29.375] [info] Measurement 'femur_z'
+[2026-10-22 21:05:29.375] [info] 	pair 0 (LME, LLE): model = 0.1, experimental = 0.12345
+[2026-10-22 21:05:29.375] [info] 	pair 1 (RLE, RME): model = 0.1, experimental = 0.111732
+[2026-10-22 21:05:29.375] [info] 	overall scale factor = 1.17591
+[2026-10-22 21:05:29.375] [info] Measurement 'shank_z'
+[2026-10-22 21:05:29.375] [info] 	pair 0 (LLA, LMA): model = 0.0940821, experimental = 0.0988177
+[2026-10-22 21:05:29.375] [info] 	pair 1 (RLA, RMA): model = 0.0940821, experimental = 0.0980801
+[2026-10-22 21:05:29.375] [info] 	pair 2 (LHF, LTT): model = 0.0806613, experimental = 0.0835814
+[2026-10-22 21:05:29.375] [info] 	pair 3 (RHF, RTT): model = 0.0806613, experimental = 0.0858647
+[2026-10-22 21:05:29.375] [info] 	overall scale factor = 1.04839
+[2026-10-22 21:05:29.375] [info] Measurement 'foot_z'
+[2026-10-22 21:05:29.375] [info] 	pair 0 (RMT1, RMT5): model = 0.0779505, experimental = 0.0921284
+[2026-10-22 21:05:29.375] [info] 	pair 1 (LMT1, LMT5): model = 0.0779505, experimental = 0.0950197
+[2026-10-22 21:05:29.375] [info] 	overall scale factor = 1.20043
+[2026-10-22 21:05:29.375] [info] Measurement 'torso_y'
+[2026-10-22 21:05:29.375] [info] 	pair 0 (LASIS, JN): model = 0.465508, experimental = 0.478816
+[2026-10-22 21:05:29.376] [info] 	pair 1 (RASIS, JN): model = 0.465508, experimental = 0.476957
+[2026-10-22 21:05:29.376] [info] 	overall scale factor = 1.02659
+[2026-10-22 21:05:29.376] [info] Measurement 'torso_x'
+[2026-10-22 21:05:29.376] [info] 	pair 0 (JN, C7): model = 0.122703, experimental = 0.174511
+[2026-10-22 21:05:29.376] [info] 	overall scale factor = 1.42222
+[2026-10-22 21:05:29.376] [info] Measurement 'torso_z'
+[2026-10-22 21:05:29.376] [info] 	pair 0 (C7, LS): model = 0.181421, experimental = 0.192507
+[2026-10-22 21:05:29.376] [info] 	overall scale factor = 1.06111
+[2026-10-22 21:05:29.376] [info] Measurement 'foot_x'
+[2026-10-22 21:05:29.376] [info] 	pair 0 (LMT1, LHEEL): model = 0.194165, experimental = 0.226899
+[2026-10-22 21:05:29.376] [info] 	pair 1 (RMT1, RHEEL): model = 0.194165, experimental = 0.22131
+[2026-10-22 21:05:29.376] [info] 	overall scale factor = 1.1542
+[2026-10-22 21:05:29.376] [info] Measurement 'exo_z'
+[2026-10-22 21:05:29.376] [info] 	pair 0 (RPP, LPP): model = 0.4, experimental = 0.361121
+[2026-10-22 21:05:29.376] [info] 	pair 1 (RMP, LMP): model = 0.348, experimental = 0.301783
+[2026-10-22 21:05:29.376] [info] 	pair 2 (RDP, LDP): model = 0.325, experimental = 0.275783
+[2026-10-22 21:05:29.376] [info] 	pair 3 (RMOTOR, LMOTOR): model = 0.504140, experimental = 0.466713
+[2026-10-22 21:05:29.376] [info] 	overall scale factor = 0.886079
+[2026-10-22 21:05:29.376] [info] Measurement 'exoT_z'
+[2026-10-22 21:05:29.376] [info] 	pair 0 (RPT, LPT): model = 0.42, experimental = 0.399791
+[2026-10-22 21:05:29.376] [info] 	overall scale factor = 0.951885
+[2026-10-22 21:05:29.477] [info] Wrote model file 'C:\Users\oscar\AppData\Local\Temp\tmpw_fz7ufx\stage1_segments_scaled.osim' from model.
+[2026-10-22 21:05:29.479] [info] Wrote scale file 'c:\CMU\MetaMobility Lab\Personal Code\git_clone\sim2real\Results\10_18_2026 AB01\model\ExoOn_Static_scaled_factors.xml' for model scaled_Exo_Clust_n_Psis.
+[2026-10-22 21:05:29.479] [info] Step 3: Placing markers on model
+[2026-10-22 21:05:29.950] [info] Loaded marker file c:\CMU\MetaMobility Lab\Personal Code\git_clone\sim2real\Data\10_18_2026 AB01\ExoOn_Static.trc (46 markers, 976 frames)
+[2026-10-22 21:05:29.950] [info] Averaged frames from time 3.0 to 3.03 in c:\CMU\MetaMobility Lab\Personal Code\git_clone\sim2real\Data\10_18_2026 AB01\ExoOn_Static.trc (frames 301 to 304)
+[2026-10-22 21:05:29.950] [info] Deleted 0 unused markers from model scaled_Exo_Clust_n_Psis.
+[2026-10-22 21:05:29.985] [info] Frame at (t = 3.0):	 total squared error = 0.0137858, marker error: RMS = 0.0173116, max = 0.0387108 (C7)
+[2026-10-22 21:05:29.985] [info] Moved markers in model scaled_Exo_Clust_n_Psis to match locations in marker file 'c:\CMU\MetaMobility Lab\Personal Code\git_clone\sim2real\Data\10_18_2026 AB01\ExoOn_Static.trc'.
+[2026-10-22 21:05:30.025] [info] Wrote model file 'c:\CMU\MetaMobility Lab\Personal Code\git_clone\sim2real\Results\10_18_2026 AB01\model\ExoOn_Static_scaled.osim' from model scaled_Exo_Clust_n_Psis.
+[2026-10-22 21:05:30.037] [info] Wrote marker file 'C:\Users\oscar\AppData\Local\Temp\tmpw_fz7ufx\stage2_placed_markers.xml' from model scaled_Exo_Clust_n_Psis.
+[2026-10-22 21:05:30.173] [info] Loaded model scaled_Exo_Clust_n_Psis from file c:\CMU\MetaMobility Lab\Personal Code\git_clone\sim2real\Results\10_18_2026 AB01\model\ExoOn_Static_scaled.osim
+[2026-10-22 21:05:30.812] [info] Loaded model scaled_NoExo_Clust_n_Psis from file c:\CMU\MetaMobility Lab\Personal Code\git_clone\sim2real\Results\10_18_2026 AB01\model\NoExo_Static_scaled.osim
+[2026-10-22 21:05:31.244] [info] Loaded model 3DGaitModel2392 from file c:\CMU\MetaMobility Lab\Personal Code\git_clone\sim2real\unscaled model\gait2392_Exo_Clust_n_Psis.osim

@@ -1,7 +1,9 @@
 """
-Batch Inverse Kinematics and Inverse Dynamics with the OpenSim Python API. Every trial in TRIALS
-is run with the same scaled model: SCALED_MODEL is loaded if it exists, otherwise it is made
-first from STATIC_TRIAL with scale_model.py. Set the paths below, then run:
+Batch Inverse Kinematics and Inverse Dynamics with the OpenSim Python API. Each trial is run with
+the scaled model of its condition (MODELS, picked by the start of the trial name). A model is
+loaded from SCALED_MODEL_DIR if it exists, otherwise it is made there with scale_model.py.
+The human body is scaled once, on the NoExo static; the ExoOn model reuses that body, so both
+conditions share one skeleton. Set the paths below, then run:
 
     python scripts/run_ik_id.py
 """
@@ -13,7 +15,7 @@ import numpy as np
 import opensim as osm
 
 import config as cfg
-from scale_model import scale_model
+from scale_model import scale_factors_path, scale_model
 from util_marker_report import print_ik_report
 from util_progress_bar import ProgressBar
 
@@ -23,32 +25,32 @@ from util_progress_bar import ProgressBar
 # Any path can be replaced by a full path, e.g. r'C:\Users\oscar\Documents\some_session'.
 _ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-SESSION = '10_18_2026 AB01'
+SESSION = '10_22_2026 AB02'
 DATA_DIR = os.path.join(_ROOT, 'Data', SESSION)
 RESULTS_DIR = os.path.join(_ROOT, 'Results', SESSION)
 # Any number of trials, run one after the other. None = every .trc in DATA_DIR.
-TRIALS = [
-    'ExoOn_LG_1p2_loose',
-    'ExoOn_LG_1p2_moderate',
-    'ExoOn_LG_1p2_tight',
-]
+TRIALS = None
 PROCESS_STATIC_TRIALS = False   # with TRIALS = None: also trials with 'standing' or 'static' in the name
 
-# ---------- Scaled model ----------
-# SCALED_MODEL is loaded if it exists. Otherwise GENERIC_MODEL is scaled to STATIC_TRIAL
-# (averaged over STATIC_TIME_WINDOW) and saved there.
-STATIC_TRIAL = 'ExoOn_Static'
-SCALED_MODEL = os.path.join(RESULTS_DIR, 'model', f'{STATIC_TRIAL}_scaled.osim')
-STATIC_TIME_WINDOW = (3.0, 3.03)   # None = whole trial
-SUBJECT_ID = 'AB01'
-
-# Model, scale template and IK setup must match the marker protocol of the session:
-#   28 markers + thigh clusters (PSIS): gait2392_NoExo_Clust_n_Psis.osim, scale_NoExo_Clust_n_Psis.xml, iktemplate.xml
-#   same + exo markers (46):            gait2392_Exo_Clust_n_Psis.osim,   scale_Exo_Clust_n_Psis.xml,   ik40mk.xml
-GENERIC_MODEL = os.path.join(_ROOT, 'unscaled model', 'gait2392_Exo_Clust_n_Psis.osim')
-SCALE_SETUP_TEMPLATE = os.path.join(_ROOT, 'setup', 'scale_Exo_Clust_n_Psis.xml')
-IK_SETUP = os.path.join(_ROOT, 'setup', 'ik40mk_PSIS1_ASIS30.xml')
-IK_MARKER_WEIGHTS = cfg.ik_marker_weights(IK_SETUP)
+# ---------- Scaled models ----------
+# One entry per condition; a trial uses the condition its name starts with. MODEL_DIR holds the
+# session's unscaled models and scale templates. The scaled model SCALED_MODEL_DIR/<static>_scaled.osim
+# is loaded if it exists, otherwise the unscaled model is scaled to the static trial averaged over
+# time_window (None = whole trial) and saved there.
+# body_from: the condition whose scaled human body (segment scale factors and masses) is reused;
+# then only the exo parts are scaled and the markers placed on this condition's static.
+# Unscaled model, scale template and IK setup (setup/) must match the marker protocol of the session.
+SUBJECT_ID = 'AB02'
+MODEL_DIR = os.path.join(DATA_DIR, 'Model and scale')
+SCALED_MODEL_DIR = os.path.join(RESULTS_DIR, 'model')
+MODELS = {
+    'NoExo': dict(static='NoExo_Static', time_window=(4.0, 4.3),
+                  generic='maria.osim', scale_setup='scale_NoExo_AB02.xml',
+                  ik_setup='iktemplate.xml'),
+    'ExoOn': dict(static='ExoOn_Static', time_window=(4.0, 4.3),
+                  generic='maria_Exo.osim', scale_setup='scale_ExoOn_AB02.xml',
+                  ik_setup='ik40mk_PSIS1_ASIS30.xml', body_from='NoExo'),
+}
 
 osm.Logger.setLevelString('warn')
 osm.Logger.removeFileSink()
@@ -195,23 +197,41 @@ def list_trials(data_dir, include_static):
     return sorted(t for t in trials if include_static or not is_static(t))
 
 
-def get_scaled_model():
-    """SCALED_MODEL if it exists, otherwise scale GENERIC_MODEL to STATIC_TRIAL and save it there."""
-    if os.path.isfile(SCALED_MODEL):
-        print(f"    model: {os.path.basename(SCALED_MODEL)} (existing)")
-        return SCALED_MODEL
-    static_trc = os.path.join(DATA_DIR, f'{STATIC_TRIAL}.trc')
+def condition_of(trial):
+    for condition in MODELS:
+        if trial.lower().startswith(condition.lower()):
+            return condition
+    raise ValueError(f"Trial '{trial}' doesn't start with any condition in MODELS ({', '.join(MODELS)})")
+
+
+def scaled_model_path(condition):
+    return os.path.join(SCALED_MODEL_DIR, f"{MODELS[condition]['static']}_scaled.osim")
+
+
+def get_scaled_model(condition):
+    """The condition's scaled model; made first if it is missing or older than the model its body comes from."""
+    m = MODELS[condition]
+    model_file = scaled_model_path(condition)
+    body_from = get_scaled_model(m['body_from']) if m.get('body_from') else None
+    is_current = (os.path.isfile(model_file) and os.path.isfile(scale_factors_path(model_file))
+                  and (body_from is None or os.path.getmtime(model_file) >= os.path.getmtime(body_from)))
+    if is_current:
+        print(f"    model {condition}: {os.path.basename(model_file)} (existing)")
+        return model_file
+
+    static_trc = os.path.join(DATA_DIR, f"{m['static']}.trc")
     if not os.path.isfile(static_trc):
-        raise FileNotFoundError(f"No scaled model ({SCALED_MODEL}) and no static trial to make one: {static_trc}")
-    print(f"    model: {os.path.basename(SCALED_MODEL)} not found, scaling from {STATIC_TRIAL}")
+        raise FileNotFoundError(f"No up-to-date scaled model ({model_file}) and no static trial to make one: {static_trc}")
+    print(f"    model {condition}: scaling from {m['static']}"
+          + (f", human body from {os.path.basename(body_from)}" if body_from else ''))
     subject = cfg.subject_info(SUBJECT_ID)
-    t_start, t_end = STATIC_TIME_WINDOW or (None, None)
-    return scale_model(SCALE_SETUP_TEMPLATE, GENERIC_MODEL, static_trc, subject.mass_kg, SCALED_MODEL,
-                       t_start=t_start, t_end=t_end,
-                       subject_height_m=subject.height_m, subject_age=subject.age)
+    t_start, t_end = m['time_window'] or (None, None)
+    return scale_model(os.path.join(MODEL_DIR, m['scale_setup']), os.path.join(MODEL_DIR, m['generic']),
+                       static_trc, subject.mass_kg, model_file, t_start=t_start, t_end=t_end,
+                       subject_height_m=subject.height_m, subject_age=subject.age, body_from_model=body_from)
 
 
-def process_trial(model_file, trial):
+def process_trial(model_file, marker_weights, trial):
     out_dir = os.path.join(RESULTS_DIR, trial)
     os.makedirs(out_dir, exist_ok=True)
     trc_file = os.path.join(DATA_DIR, f'{trial}.trc')
@@ -219,7 +239,7 @@ def process_trial(model_file, trial):
     ik_file = os.path.join(out_dir, f'ik_{trial}.mot')
     loads_xml = os.path.join(out_dir, f'forces_{trial}.xml')
 
-    run_ik(model_file, trc_file, IK_MARKER_WEIGHTS, ik_file,
+    run_ik(model_file, trc_file, marker_weights, ik_file,
            os.path.join(out_dir, f'ik_marker_errors_{trial}.sto'), trial)
     if not os.path.isfile(force_mot):
         print(f"  ID  {trial}: no force file ({os.path.basename(force_mot)}), skipped")
@@ -235,15 +255,18 @@ def main():
     if missing:
         raise FileNotFoundError(f"No .trc in {DATA_DIR} for: {', '.join(missing)}")
     print(f"\n=== {DATA_DIR}\n    trials ({len(trials)}): {', '.join(trials)}")
-    model_file = get_scaled_model()
+    conditions = {t: condition_of(t) for t in trials}
+    models = {c: get_scaled_model(c) for c in dict.fromkeys(conditions.values())}
+    weights = {c: cfg.ik_marker_weights(os.path.join(_ROOT, 'setup', MODELS[c]['ik_setup'])) for c in models}
 
     # One failing trial doesn't stop the rest of the batch
     failed = []
     for i, trial in enumerate(trials, 1):
-        print(f"\n--- [{i}/{len(trials)}] {trial}")
+        c = conditions[trial]
+        print(f"\n--- [{i}/{len(trials)}] {trial}  ({c}: {os.path.basename(models[c])})")
         t0 = time.time()
         try:
-            process_trial(model_file, trial)
+            process_trial(models[c], weights[c], trial)
         except Exception as e:
             print(f"  FAILED {trial}: {e}")
             failed.append(trial)

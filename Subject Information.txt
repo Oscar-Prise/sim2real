@@ -5,7 +5,7 @@ AB 01 Oscar Luo
  Gender: Male
 
 AB 02 Maria Tagliaferri
- Weight: 55.2 kg
+ Weight: 55.7 kg
  Height: 1.65 m
  Age: 24
  Gender: Female

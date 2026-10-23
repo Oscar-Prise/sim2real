@@ -10,10 +10,16 @@ One-time setup (GUI):
 After that, set the paths below and run:
     python scripts/scale_model.py
 Input: the unscaled model and the static .trc. Output: the scaled model (OUTPUT_MODEL), which
-run_ik_id.py and hip_from_femur.py then load.
+run_ik_id.py and hip_from_femur.py then load, and its scale factors (<model>_factors.xml).
+
+One body for every condition: give BODY_FROM_MODEL (e.g. the NoExo scaled model) and the human
+segments take that model's scale factors and masses instead of being measured again on this
+static. Only the bodies it doesn't have (the exo parts) are scaled from this static, and the
+markers are placed on it as usual.
 """
 import os
 import tempfile
+import xml.etree.ElementTree as ET
 
 import numpy as np
 import opensim as osm
@@ -46,6 +52,13 @@ OUTPUT_MODEL = os.path.join(_ROOT, 'Results', '10_18_2026 AB01', 'model', 'NoExo
 #   28 markers + thigh clusters (PSIS):  gait2392_NoExo_Clust_n_Psis.osim, scale_NoExo_Clust_n_Psis.xml
 GENERIC_MODEL = os.path.join(_ROOT, 'unscaled model', 'gait2392_NoExo_Clust_n_Psis.osim')
 SCALE_SETUP_TEMPLATE = os.path.join(_ROOT, 'setup', 'scale_NoExo_Clust_n_Psis.xml')
+# None = scale every body from STATIC_TRC. For the exo model: the scaled NoExo model.
+BODY_FROM_MODEL = None
+
+
+def scale_factors_path(scaled_model_file):
+    """Scale factors written next to every scaled model: <model>_factors.xml."""
+    return os.path.splitext(scaled_model_file)[0] + '_factors.xml'
 
 
 def _time_range(trc_file, t_start=None, t_end=None):
@@ -62,7 +75,7 @@ def _time_range(trc_file, t_start=None, t_end=None):
 def scale_model(setup_template_xml, generic_model_file, static_trc_file,
                 subject_mass_kg, output_model_file,
                 t_start=None, t_end=None, marker_set_file=None,
-                subject_height_m=None, subject_age=None):
+                subject_height_m=None, subject_age=None, body_from_model=None):
     """
     Scale `generic_model_file` to the subject using the static trial and return the
     path of the scaled model (.osim).
@@ -72,6 +85,8 @@ def scale_model(setup_template_xml, generic_model_file, static_trc_file,
     t_start / t_end    : time window of the static trial to use (default: whole file).
     marker_set_file    : optional marker set .xml to attach to the generic model. Default: the
                          template's <marker_set_file>, relative paths taken from the template's folder.
+    body_from_model    : optional scaled model made by this function (e.g. NoExo). Its bodies keep
+                         its scale factors and masses; only the other bodies are measured here.
     """
     # Absolute paths avoid OpenSim resolving them relative to the template's folder
     setup_template_xml = os.path.abspath(setup_template_xml)
@@ -79,23 +94,33 @@ def scale_model(setup_template_xml, generic_model_file, static_trc_file,
     static_trc_file = os.path.abspath(static_trc_file)
     output_model_file = os.path.abspath(output_model_file)
     os.makedirs(os.path.dirname(output_model_file), exist_ok=True)
+    if body_from_model:
+        body_from_model = os.path.abspath(body_from_model)
+        if not os.path.isfile(scale_factors_path(body_from_model)):
+            raise FileNotFoundError(f"No scale factors for {body_from_model} "
+                                    f"({scale_factors_path(body_from_model)}); rescale that model first.")
 
-    # Only the final model is kept; the in-between files are needed for the report, then deleted
+    # Only the model and its scale factors are kept; the other files are needed for the report, then deleted
     with tempfile.TemporaryDirectory(ignore_cleanup_errors=True) as intermediate_dir:
         return _run_scale_tool(setup_template_xml, generic_model_file, static_trc_file, subject_mass_kg,
                                output_model_file, t_start, t_end, marker_set_file, subject_height_m,
-                               subject_age, intermediate_dir)
+                               subject_age, body_from_model, intermediate_dir)
 
 
 def _run_scale_tool(setup_template_xml, generic_model_file, static_trc_file, subject_mass_kg,
                     output_model_file, t_start, t_end, marker_set_file, subject_height_m,
-                    subject_age, intermediate_dir):
+                    subject_age, body_from_model, intermediate_dir):
     stage1_model_file = os.path.join(intermediate_dir, 'stage1_segments_scaled.osim')
-    scale_factors_file = os.path.join(intermediate_dir, 'stage1_scale_factors.xml')
+    scale_factors_file = scale_factors_path(output_model_file)
     placed_markers_file = os.path.join(intermediate_dir, 'stage2_placed_markers.xml')
     time_range = _time_range(static_trc_file, t_start, t_end)
 
-    tool = osm.ScaleTool(setup_template_xml)
+    tool_setup = setup_template_xml
+    if body_from_model:
+        tool_setup = os.path.join(intermediate_dir, 'scale_setup_body_from_model.xml')
+        _setup_with_fixed_bodies(setup_template_xml, scale_factors_path(body_from_model),
+                                 _body_names(body_from_model), tool_setup)
+    tool = osm.ScaleTool(tool_setup)
     # Otherwise OpenSim prefixes every file with the template's folder, even absolute paths
     tool.setPathToSubject('')
 
@@ -140,12 +165,60 @@ def _run_scale_tool(setup_template_xml, generic_model_file, static_trc_file, sub
           f"{subject_mass_kg} kg)...", end=' ', flush=True)
     if not tool.run():
         raise RuntimeError("ScaleTool.run() failed - check the OpenSim log above.")
+    if body_from_model:
+        _copy_body_masses(output_model_file, body_from_model, generic_model_file)
     print(f"done -> {os.path.basename(output_model_file)}")
+    if body_from_model:
+        print(f"  Human body (scale factors and masses) taken from {os.path.basename(body_from_model)}")
 
     names, static_err, moved = _static_check(tool, stage1_model_file, output_model_file,
                                              static_trc_file, time_range.get(0), time_range.get(1))
     print_scale_report(names, static_err, moved, read_scale_factors(scale_factors_file))
     return output_model_file
+
+
+def _body_names(model_file):
+    model = osm.Model(model_file)
+    bodies = model.getBodySet()
+    return {bodies.get(i).getName() for i in range(bodies.getSize())}
+
+
+def _setup_with_fixed_bodies(setup_template_xml, scale_factors_xml, body_names, out_xml):
+    """Copy of the scale setup that measures as usual, then overwrites the factors of `body_names`
+    with those of `scale_factors_xml` (manual scaling after measurements replaces them)."""
+    tree = ET.parse(setup_template_xml)
+    scaler = tree.getroot().find('.//ModelScaler')
+    scaler.find('apply').text = 'true'
+    scaler.find('scaling_order').text = ' measurements manualScale'
+    objects = scaler.find('ScaleSet/objects')
+    objects.clear()
+    for scale in ET.parse(scale_factors_xml).getroot().iter('Scale'):
+        if scale.findtext('segment', '').strip() in body_names:
+            objects.append(scale)
+    tree.write(out_xml, encoding='UTF-8', xml_declaration=True)
+
+
+def _copy_body_masses(model_file, body_from_model, generic_model_file):
+    """Bodies of `body_from_model` get its mass and inertia. The other bodies (exo parts) are
+    hardware: generic mass, inertia rescaled to it."""
+    # Keep every Model alive while its BodySet is used, or Python frees it underneath (crash)
+    model, source_model, generic_model = (osm.Model(f) for f in (model_file, body_from_model, generic_model_file))
+    bodies, source, generic = model.getBodySet(), source_model.getBodySet(), generic_model.getBodySet()
+    for i in range(bodies.getSize()):
+        body = bodies.get(i)
+        name = body.getName()
+        if source.contains(name):
+            ref = source.get(name)
+            body.set_mass(ref.get_mass())
+            body.set_mass_center(ref.get_mass_center())
+            body.set_inertia(ref.get_inertia())
+        elif generic.contains(name) and body.get_mass() > 0:
+            ratio = generic.get(name).get_mass() / body.get_mass()
+            inertia = body.get_inertia()
+            body.set_mass(generic.get(name).get_mass())
+            body.set_inertia(osm.Vec6(*[ratio * inertia.get(k) for k in range(6)]))
+    model.finalizeConnections()
+    model.printToXML(model_file)
 
 
 def _static_check(tool, stage1_model_file, final_model_file, static_trc_file, t_start, t_end):
@@ -205,4 +278,5 @@ if __name__ == '__main__':
         t_end=t_end,
         subject_height_m=subject.height_m,
         subject_age=subject.age,
+        body_from_model=BODY_FROM_MODEL,
     )
