@@ -9,6 +9,7 @@ For every trial in TRIALS, two figures are shown and saved: one for IK, one for 
 across gait cycles.
 """
 import os
+import time
 
 import numpy as np
 import pandas as pd
@@ -44,6 +45,11 @@ FORCE_PLATE = {'r': 1, 'l': 2}  # plate number under each foot (see forces_<tria
 #   'exo_pelvis':   exo thigh relative to the exo pelvis (exo_hip_Rrz / Lrz, what the exo hinge sees)
 #   'human_pelvis': exo thigh relative to the human pelvis (exo pelvis tilt included)
 EXO_HIP_VERSIONS = ['exo_pelvis', 'human_pelvis']   # [] = no exo hip figure
+
+# Fixed y-axis limits so every trial's figures share the same scale; None = automatic
+IK_YLIM = {'hip_flexion': (-40, 40), 'knee_angle': (-10, 80), 'ankle_angle': (-40, 20)}   # deg
+ID_YLIM = {'hip_flexion': (-1, 1), 'knee_angle': (-1, 1), 'ankle_angle': (-2, 0.5)}      # Nm/kg
+EXO_HIP_YLIM = (-40, 40)                                                                 # deg
 
 # ======================= Paths (built from the settings above) =======================
 # Any folder can be replaced by a full path, e.g. r'C:\Users\oscar\Documents\some_session'.
@@ -157,7 +163,7 @@ def label_direction(ax, positive, negative):
     ax.text(0.01, 0.02, f'{negative} \u2193', va='bottom', **text_kw)
 
 
-def plot_gait_figure(table, column_suffix, scale, heel_strikes, title, ylabel_unit):
+def plot_gait_figure(table, column_suffix, scale, heel_strikes, title, ylabel_unit, ylims=None):
     """3 x 2 figure: rows hip / knee / ankle, columns left / right, mean ± 1 SD over the gait cycle."""
     time = table['time'].values
     percent = np.linspace(0, 100, GAIT_POINTS)
@@ -176,6 +182,8 @@ def plot_gait_figure(table, column_suffix, scale, heel_strikes, title, ylabel_un
             ax.fill_between(percent, mean - sd, mean + sd, color=color, alpha=0.25, linewidth=0)
 
             ax.set_xlim(0, 100)
+            if ylims and ylims.get(column):
+                ax.set_ylim(*ylims[column])
             ax.legend(loc='upper right', fontsize=8)
             if row == 0:
                 ax.set_title(side_name, fontsize=12)
@@ -213,6 +221,8 @@ def plot_exo_hip_figure(ik, heel_strikes, title):
                 ax.fill_between(percent, mean - sd, mean + sd, color=c, alpha=0.25, linewidth=0)
 
             ax.set_xlim(0, 100)
+            if EXO_HIP_YLIM:
+                ax.set_ylim(*EXO_HIP_YLIM)
             ax.legend(loc='upper right', fontsize=8)
             if row == 0:
                 ax.set_title(side_name, fontsize=12)
@@ -240,9 +250,11 @@ def plot_trial(trial, mass):
     ik = read_opensim_table(paths['ik'])
     id_ = read_opensim_table(paths['id'])
     fig_ik = plot_gait_figure(ik, '', 1.0, heel_strikes,
-                              f'Joint angles from inverse kinematics - {trial} (mean ± 1 SD)', 'angle (deg)')
+                              f'Joint angles from inverse kinematics - {trial} (mean ± 1 SD)', 'angle (deg)',
+                              IK_YLIM)
     fig_id = plot_gait_figure(id_, '_moment', 1.0 / mass, heel_strikes,
-                              f'Joint moments from inverse dynamics - {trial} (mean ± 1 SD)', 'moment (Nm/kg)')
+                              f'Joint moments from inverse dynamics - {trial} (mean ± 1 SD)', 'moment (Nm/kg)',
+                              ID_YLIM)
     figs = {'ik_fig': fig_ik, 'id_fig': fig_id}
     if EXO_HIP_VERSIONS and 'exo_hip_Rrz' in ik.columns:
         figs['exo_hip_fig'] = plot_exo_hip_figure(ik, heel_strikes,
@@ -250,7 +262,15 @@ def plot_trial(trial, mass):
 
     for key, fig in figs.items():
         if SAVE_FIGS:
-            fig.savefig(paths[key], dpi=FIG_DPI, bbox_inches='tight')
+            # An image open in a viewer / the IDE preview can briefly lock the file on Windows
+            for attempt in range(10):
+                try:
+                    fig.savefig(paths[key], dpi=FIG_DPI, bbox_inches='tight')
+                    break
+                except OSError:
+                    if attempt == 9:
+                        raise
+                    time.sleep(0.5)
             print(f"  saved {os.path.basename(paths[key])}")
         if not SHOW_FIGS:
             plt.close(fig)

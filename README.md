@@ -18,13 +18,17 @@ sim2real/
 │   │                                model first if it isn't in Results/<session>/model/ yet
 │   ├── hip_from_femur.py            scaled model + trial .trc -> GTR rebuilt from LE / ME (.trc with
 │   │                                RGTR_est / LGTR_est added), error plots
-│   ├── util_IKIDGaitPlot.py         IK and ID figures of one trial over the gait cycle (settings at the top)
+│   ├── run_body_kinematics.py       OpenSim BodyKinematics (Analyze tool) of every trial + its static
+│   ├── util_IKIDGaitPlot.py         IK and ID figures of a list of trials over the gait cycle (settings at the top)
+│   ├── util_BodyKinematicsPlot.py   femur vs pelvis / torso and exo vs human thigh, 0 = static pose
 │   ├── util_marker_report.py        marker-error tables printed by scale_model.py and run_ik_id.py
 │   ├── util_progress_bar.py         progress bar
 │   └── util_stl2vtp.py              convert .stl geometry to .vtp
 ├── Results/<session>/               everything generated (safe to delete)
 │   ├── model/<static>_scaled.osim   scaled model (only file kept from scaling)
-│   └── <trial>/                     IK .mot, ID .sto, marker errors, external loads .xml
+│   ├── bodykinematics/              figures of util_BodyKinematicsPlot.py
+│   └── <trial>/                     IK .mot, ID .sto, marker errors, external loads .xml,
+│                                    BodyKinematics pos / vel / acc .sto
 └── environment.yml
 ```
 
@@ -37,6 +41,8 @@ python scripts/run_ik_id.py        # 1. IK + ID of every trial in TRIALS (scales
 python scripts/scale_model.py      #    optional: (re)scale on its own, e.g. after changing the template
 python scripts/hip_from_femur.py   #    GTR reconstruction with the scaled model
 python scripts/util_IKIDGaitPlot.py   # 2. plots from step 1
+python scripts/run_body_kinematics.py      # 3. BodyKinematics of the trials from step 1 (+ statics)
+python scripts/util_BodyKinematicsPlot.py  #    segment-vs-segment plots from step 3
 ```
 Each script reads its inputs from the settings at its top and only writes its own outputs.
 
